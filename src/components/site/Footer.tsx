@@ -6,39 +6,39 @@ const COLS = [
   {
     title: "Company",
     links: [
-      ["About", "/about"],
-      ["Industries", "/industries"],
-      ["FAQs", "/faqs"],
-      ["Contact", "/contact"],
+      { label: "About", to: "/about" },
+      { label: "Industries", to: "/industries" },
+      { label: "FAQs", to: "/faqs" },
+      { label: "Contact", to: "/contact" },
     ],
   },
   {
     title: "Services",
     links: [
-      ["Digital Transformation", "/services/digital-transformation"],
-      ["Cloud Services", "/services/cloud-services"],
-      ["Artificial Intelligence", "/services/artificial-intelligence"],
-      ["SAP", "/services/sap"],
-      ["Global Talent Solutions", "/services/global-talent-solutions"],
+      { label: "Digital Transformation", to: "/services/$slug", params: { slug: "digital-transformation" } },
+      { label: "Cloud Services", to: "/services/$slug", params: { slug: "cloud-services" } },
+      { label: "Artificial Intelligence", to: "/services/$slug", params: { slug: "artificial-intelligence" } },
+      { label: "SAP", to: "/services/$slug", params: { slug: "sap" } },
+      { label: "Global Talent Solutions", to: "/services/$slug", params: { slug: "global-talent-solutions" } },
     ],
   },
   {
     title: "Industries",
     links: [
-      ["Manufacturing", "/industries"],
-      ["BFSI", "/industries"],
-      ["Healthcare", "/industries"],
-      ["Energy & Utilities", "/industries"],
-      ["Telecommunications", "/industries"],
+      { label: "Manufacturing", to: "/industries" },
+      { label: "BFSI", to: "/industries" },
+      { label: "Healthcare", to: "/industries" },
+      { label: "Energy & Utilities", to: "/industries" },
+      { label: "Telecommunications", to: "/industries" },
     ],
   },
   {
     title: "Resources",
     links: [
-      ["FAQs", "/faqs"],
-      ["Privacy Policy", "/contact"],
-      ["Terms of Service", "/contact"],
-      ["Careers", "/contact"],
+      { label: "FAQs", to: "/faqs" },
+      { label: "Privacy Policy", to: "/contact" },
+      { label: "Terms of Service", to: "/contact" },
+      { label: "Careers", to: "/contact" },
     ],
   },
 ] as const;
@@ -87,10 +87,14 @@ export function Footer() {
               <div key={col.title}>
                 <h4 className="text-sm font-semibold uppercase tracking-wider text-brand-cyan">{col.title}</h4>
                 <ul className="mt-4 space-y-2.5">
-                  {col.links.map(([label, to]) => (
-                    <li key={label}>
-                      <Link to={to} className="text-sm text-white/70 hover:text-white transition-colors">
-                        {label}
+                  {col.links.map((link) => (
+                    <li key={link.label}>
+                      <Link
+                        to={link.to}
+                        params={"params" in link ? link.params : undefined}
+                        className="text-sm text-white/70 hover:text-white transition-colors"
+                      >
+                        {link.label}
                       </Link>
                     </li>
                   ))}
