@@ -15,11 +15,11 @@ const COLS = [
   {
     title: "Services",
     links: [
-      ["Digital Transformation", "/services"],
-      ["Cloud & DevOps", "/services"],
-      ["AI & Automation", "/services"],
-      ["Salesforce & SAP", "/services"],
-      ["Talent Solutions", "/services"],
+      ["Digital Transformation", "/services/digital-transformation"],
+      ["Cloud Services", "/services/cloud-services"],
+      ["Artificial Intelligence", "/services/artificial-intelligence"],
+      ["SAP", "/services/sap"],
+      ["Global Talent Solutions", "/services/global-talent-solutions"],
     ],
   },
   {
