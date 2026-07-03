@@ -101,7 +101,7 @@ export function Footer() {
             </Tilt3D>
             <p className="mt-6 text-sm leading-relaxed text-white/70 max-w-sm">
               Vedant Group is a global enterprise consulting group engineering digital excellence
-              across cloud, AI, automation and world-class talent â€” trusted by leaders in 25+
+              across cloud, AI, automation and world-class talent — trusted by leaders in 25+
               countries.
             </p>
 
@@ -186,7 +186,7 @@ export function Footer() {
         </Tilt3D>
 
         <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/50">
-          <p>Â© {new Date().getFullYear()} Vedant Group. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Vedant Group. All rights reserved.</p>
           <p>Engineered with precision across 25+ countries.</p>
         </div>
       </div>

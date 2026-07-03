@@ -17,13 +17,13 @@ export const Route = createFileRoute("/faqs")({
   component: FAQPage,
   head: () => ({
     meta: [
-      { title: "FAQs â€” Vedant Group" },
+      { title: "FAQs — Vedant Group" },
       {
         name: "description",
         content:
-          "Frequently asked questions about Vedant Group' enterprise services, engagement models and global delivery.",
+          "Frequently asked questions about Vedant Group's enterprise services, engagement models and global delivery.",
       },
-      { property: "og:title", content: "FAQs â€” Vedant Group" },
+      { property: "og:title", content: "FAQs — Vedant Group" },
       { property: "og:url", content: "/faqs" },
     ],
     links: [{ rel: "canonical", href: "/faqs" }],
@@ -43,7 +43,7 @@ const RAW_FAQS: Omit<FaqItem, "id">[] = [
   {
     category: "General",
     q: "What industries does Vedant Group serve?",
-    a: "We serve manufacturing, BFSI, healthcare, life sciences, energy, utilities, telecom, government, retail, logistics and automotive â€” with dedicated domain-expert teams for each.",
+    a: "We serve manufacturing, BFSI, healthcare, life sciences, energy, utilities, telecom, government, retail, logistics and automotive — with dedicated domain-expert teams for each.",
   },
   {
     category: "General",
@@ -58,7 +58,7 @@ const RAW_FAQS: Omit<FaqItem, "id">[] = [
   {
     category: "General",
     q: "How do you price engagements?",
-    a: "Fixed-scope, T&M, dedicated capacity or outcome-based â€” we tailor commercials to the engagement.",
+    a: "Fixed-scope, T&M, dedicated capacity or outcome-based — we tailor commercials to the engagement.",
   },
   {
     category: "General",
@@ -68,7 +68,7 @@ const RAW_FAQS: Omit<FaqItem, "id">[] = [
   {
     category: "General",
     q: "How do I start a conversation?",
-    a: "Use the contact form or request a consultation â€” a senior partner will respond within one business day.",
+    a: "Use the contact form or request a consultation — a senior partner will respond within one business day.",
   },
   {
     category: "Security & Compliance",
@@ -83,7 +83,7 @@ const RAW_FAQS: Omit<FaqItem, "id">[] = [
   {
     category: "Technology & Services",
     q: "Do you work with Salesforce and SAP?",
-    a: "Yes â€” we have 1700+ Salesforce certifications and deep SAP capability across consulting, implementation, integration and managed services.",
+    a: "Yes — we have 1700+ Salesforce certifications and deep SAP capability across consulting, implementation, integration and managed services.",
   },
   {
     category: "Technology & Services",
@@ -133,7 +133,7 @@ const RAW_FAQS: Omit<FaqItem, "id">[] = [
   {
     category: "Delivery & Support",
     q: "What is your approach to change management?",
-    a: "Structured governance, executive enablement, training academies and adoption analytics â€” outcomes, not just go-lives.",
+    a: "Structured governance, executive enablement, training academies and adoption analytics — outcomes, not just go-lives.",
   },
   {
     category: "Delivery & Support",
@@ -200,7 +200,7 @@ function FAQPage() {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search questions â€” e.g. security, cloud, pricingâ€¦"
+              placeholder="Search questions — e.g. security, cloud, pricing…"
               className="w-full rounded-2xl border border-border/60 bg-white py-4 pl-12 pr-12 text-sm shadow-card-soft outline-none transition-shadow focus:shadow-elegant focus:ring-2 focus:ring-brand-sky/40"
             />
             {search.length > 0 && (

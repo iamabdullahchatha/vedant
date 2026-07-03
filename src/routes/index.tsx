@@ -9,9 +9,9 @@ export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: "Vedant Group â€” Engineering Global Digital Excellence" },
+      { title: "Vedant Group — Engineering Global Digital Excellence" },
       { name: "description", content: "Global enterprise consulting, cloud, AI, automation, Salesforce, SAP and talent solutions across 25+ countries." },
-      { property: "og:title", content: "Vedant Group â€” Engineering Global Digital Excellence" },
+      { property: "og:title", content: "Vedant Group — Engineering Global Digital Excellence" },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],

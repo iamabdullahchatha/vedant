@@ -76,7 +76,7 @@ export function Navigation() {
   }, []);
 
   // Header sits over a dark hero at the top of every page, and over a light
-  // surface once scrolled â€” so link colors flip to stay readable in both states.
+  // surface once scrolled — so link colors flip to stay readable in both states.
   const linkBase = scrolled
     ? "text-foreground/70 hover:text-primary hover:bg-primary/5"
     : "text-white/85 hover:text-white hover:bg-white/10";
@@ -99,7 +99,7 @@ export function Navigation() {
         <Link
           to="/"
           className="flex items-center gap-2 shrink-0"
-          aria-label="Vedant Group â€” home"
+          aria-label="Vedant Group — home"
         >
           <LogoMark scrolled={scrolled} />
         </Link>
@@ -161,7 +161,7 @@ export function Navigation() {
                           onClick={() => setMegaOpen(false)}
                           className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
                         >
-                          View all services â†’
+                          View all services →
                         </Link>
                       </div>
                     </motion.div>
@@ -189,7 +189,7 @@ export function Navigation() {
           >
             <span className="pointer-events-none absolute inset-0 -translate-x-full bg-white/25 skew-x-12 transition-transform duration-700 group-hover:translate-x-full" />
             Get Consultation
-            <span className="transition-transform group-hover:translate-x-0.5">â†’</span>
+            <span className="transition-transform group-hover:translate-x-0.5">→</span>
           </Link>
         </div>
 

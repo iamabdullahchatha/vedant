@@ -39,7 +39,7 @@ export const Route = createFileRoute("/services/$slug")({
   component: ServiceDetailPage,
   head: ({ params }) => {
     const service = getServiceBySlug(params.slug);
-    const title = service ? `${service.name} â€” Vedant Group` : "Service â€” Vedant Group";
+    const title = service ? `${service.name} — Vedant Group` : "Service — Vedant Group";
     const description = service?.description ?? "Enterprise services from Vedant Group.";
     return {
       meta: [
@@ -81,7 +81,7 @@ const STEPS = [
 ];
 
 const GLANCE = [
-  { icon: Globe2, label: "Delivery", value: "Global Â· 25+ countries" },
+  { icon: Globe2, label: "Delivery", value: "Global · 25+ countries" },
   { icon: ShieldCheck, label: "Teams", value: "Certified specialists" },
   { icon: Layers, label: "Engagement", value: "Flexible models" },
 ];
@@ -203,7 +203,7 @@ function ServiceDetailPage() {
               </h2>
               <p className="mt-5 text-muted-foreground leading-relaxed">{service.description}</p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                Delivered by Vedant Group' global teams across 25+ countries, every engagement
+                Delivered by Vedant Group's global teams across 25+ countries, every engagement
                 combines deep domain expertise, certified specialists and a delivery model built for
                 security, quality and measurable business outcomes.
               </p>
@@ -304,7 +304,7 @@ function ServiceDetailPage() {
                 </div>
                 <h3 className="mt-5 text-lg font-semibold">Talk to a {service.name} expert</h3>
                 <p className="mt-2 text-sm text-white/70 leading-relaxed">
-                  Get a tailored proposal and a clear plan â€” a senior partner responds within one
+                  Get a tailored proposal and a clear plan — a senior partner responds within one
                   business day.
                 </p>
                 <Link

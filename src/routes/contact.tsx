@@ -13,9 +13,9 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
   head: () => ({
     meta: [
-      { title: "Contact â€” Vedant Group" },
-      { name: "description", content: "Talk to a Vedant Group expert. Reach our global HQ in the RAK Economic Free Zone, UAE â€” we respond within one business day." },
-      { property: "og:title", content: "Contact â€” Vedant Group" },
+      { title: "Contact — Vedant Group" },
+      { name: "description", content: "Talk to a Vedant Group expert. Reach our global HQ in the RAK Economic Free Zone, UAE — we respond within one business day." },
+      { property: "og:title", content: "Contact — Vedant Group" },
       { property: "og:url", content: "/contact" },
     ],
     links: [{ rel: "canonical", href: "/contact" }],
@@ -40,7 +40,7 @@ const INFO = [
   {
     icon: Clock,
     label: "Business hours",
-    lines: ["Sunday â€“ Thursday", "9:00 â€“ 18:00 (GST)"],
+    lines: ["Sunday – Thursday", "9:00 – 18:00 (GST)"],
   },
 ];
 
@@ -154,7 +154,7 @@ function ContactPage() {
                 <>
                   <h2 className="text-2xl font-bold">Start a conversation</h2>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Tell us about your goals â€” the more context, the sharper our first response.
+                    Tell us about your goals — the more context, the sharper our first response.
                   </p>
                   <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <Field label="Full name" name="name" placeholder="Jane Doe" />
@@ -171,7 +171,7 @@ function ContactPage() {
                       required
                       className="mt-2 w-full rounded-xl border border-border bg-white px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition"
                     >
-                      <option value="" disabled>Select an inquiry typeâ€¦</option>
+                      <option value="" disabled>Select an inquiry type…</option>
                       <option>New project or consultation</option>
                       <option>Cloud, AI &amp; automation</option>
                       <option>Salesforce / SAP / ERP</option>
@@ -189,7 +189,7 @@ function ContactPage() {
                       name="message"
                       rows={5}
                       required
-                      placeholder="Tell us about your project, timelines and goalsâ€¦"
+                      placeholder="Tell us about your project, timelines and goals…"
                       className="mt-2 w-full rounded-xl border border-border bg-white px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition"
                     />
                   </label>

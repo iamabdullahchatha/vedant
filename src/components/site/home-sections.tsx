@@ -29,9 +29,9 @@ const SLIDES = [
   },
   {
     img: picCircuit,
-    eyebrow: "Artificial Intelligence Â· Automation",
+    eyebrow: "Artificial Intelligence · Automation",
     title: "Intelligent Automation\nfor the Future",
-    sub: "AI, Machine Learning, RPA, Industry 4.0, Cloud and IoT â€” engineered for the world's most ambitious operations.",
+    sub: "AI, Machine Learning, RPA, Industry 4.0, Cloud and IoT — engineered for the world's most ambitious operations.",
     tags: ["AI", "Machine Learning", "RPA", "IoT"],
   },
   {
@@ -43,14 +43,14 @@ const SLIDES = [
   },
   {
     img: picIndustry,
-    eyebrow: "Manufacturing Â· Process Automation",
+    eyebrow: "Manufacturing · Process Automation",
     title: "Powering Modern\nManufacturing",
     sub: "Smart factories, PLC, SCADA, MES and industrial robotics engineered for measurable production gains.",
     tags: ["PLC", "SCADA", "MES", "Industry 4.0"],
   },
   {
     img: picTeamMeeting,
-    eyebrow: "Global Workforce Â· Talent Solutions",
+    eyebrow: "Global Workforce · Talent Solutions",
     title: "Connecting Global Talent\nwith Global Businesses",
     sub: "Permanent, contract and managed talent for enterprises operating across 25+ countries.",
     tags: ["Talent", "Hiring", "Global"],
@@ -191,7 +191,7 @@ export function Stats() {
     { value: 15, suffix: "+", label: "Years Experience" },
     { value: 1700, suffix: "+", label: "Salesforce Certifications" },
     { value: 3000, suffix: "+", label: "Projects Delivered" },
-    { value: 25, suffix: "+", label: "Countries Â· Global Presence" },
+    { value: 25, suffix: "+", label: "Countries · Global Presence" },
   ];
   return (
     <section className="relative -mt-24 z-20 px-4 sm:px-6 lg:px-8 perspective-1000">
@@ -333,7 +333,7 @@ export function Services() {
             Enterprise services engineered for <span className="text-gradient-brand">scale, security and speed.</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
-            From boardroom strategy to shop-floor automation â€” a single global partner for the
+            From boardroom strategy to shop-floor automation — a single global partner for the
             entire enterprise technology lifecycle.
           </p>
         </div>
@@ -524,7 +524,7 @@ export function GlobalPresenceMap() {
             </h2>
             <p className="mt-4 text-muted-foreground">
               A follow-the-sun delivery model spanning North America, Europe, the Middle East,
-              India, APAC and beyond â€” one global standard of engineering excellence.
+              India, APAC and beyond — one global standard of engineering excellence.
             </p>
             <div className="mt-8 grid grid-cols-3 gap-2 max-w-md">
               {["USA", "Canada", "UK", "Germany", "France", "Ireland", "UAE", "KSA", "Qatar", "India", "Singapore", "Japan", "Australia", "China", "S. Korea"].map((c) => (
@@ -642,17 +642,17 @@ const TESTIMONIALS = [
   {
     quote: "Vedant re-engineered our cloud estate across three continents without a single hour of downtime. Their delivery discipline is genuinely world-class.",
     name: "Group CTO",
-    role: "Global Manufacturing Â· Fortune 500",
+    role: "Global Manufacturing · Fortune 500",
   },
   {
     quote: "The Salesforce and data programs paid for themselves within two quarters. A partner that speaks both the boardroom and the shop floor.",
     name: "VP, Digital",
-    role: "Energy & Utilities Â· Europe",
+    role: "Energy & Utilities · Europe",
   },
   {
     quote: "From AI proof-of-concept to production in weeks, with governance we could actually stand behind. Exactly the pace our market demanded.",
     name: "Chief Data Officer",
-    role: "BFSI Â· Middle East",
+    role: "BFSI · Middle East",
   },
 ];
 
@@ -724,7 +724,7 @@ export function CTA() {
               </h2>
               <p className="mt-4 text-white/85 max-w-xl">
                 Talk to a Vedant expert. Get a tailored roadmap for transformation, automation
-                or global talent â€” in a single working session.
+                or global talent — in a single working session.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row lg:justify-end gap-3">

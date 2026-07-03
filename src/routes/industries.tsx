@@ -12,13 +12,13 @@ export const Route = createFileRoute("/industries")({
   component: IndustriesPage,
   head: () => ({
     meta: [
-      { title: "Industries â€” Vedant Group" },
+      { title: "Industries — Vedant Group" },
       {
         name: "description",
         content:
           "Deep industry expertise across manufacturing, BFSI, healthcare, energy, telecom, government, logistics and more.",
       },
-      { property: "og:title", content: "Industries â€” Vedant Group" },
+      { property: "og:title", content: "Industries — Vedant Group" },
       { property: "og:url", content: "/industries" },
     ],
     links: [{ rel: "canonical", href: "/industries" }],
@@ -30,7 +30,7 @@ const DIFFERENTIATORS = [
     icon: ShieldCheck,
     title: "Regulatory fluency",
     description:
-      "From HIPAA to GDPR, PCI-DSS to GxP â€” our teams design for the compliance regime your industry actually operates under.",
+      "From HIPAA to GDPR, PCI-DSS to GxP — our teams design for the compliance regime your industry actually operates under.",
   },
   {
     icon: Sparkles,
@@ -42,7 +42,7 @@ const DIFFERENTIATORS = [
     icon: Users,
     title: "Embedded specialists",
     description:
-      "Engineers and consultants who speak the domain language â€” plant operations, underwriting, clinical workflows â€” from day one.",
+      "Engineers and consultants who speak the domain language — plant operations, underwriting, clinical workflows — from day one.",
   },
 ];
 
@@ -57,7 +57,7 @@ function IndustriesPage() {
             <span className="text-gradient-brand bg-clip-text">every enterprise industry.</span>
           </>
         }
-        subtitle="Regulated, mission-critical or consumer-facing â€” we bring the right specialists, playbooks and technology stack."
+        subtitle="Regulated, mission-critical or consumer-facing — we bring the right specialists, playbooks and technology stack."
         image={industriesHero}
       />
 
