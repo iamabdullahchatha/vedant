@@ -14,7 +14,7 @@ import picCircuit from "@/assets/pic-circuit.jpg";
 import picWorkstation from "@/assets/pic-workstation.jpg";
 import picIndustry from "@/assets/pic-industry.jpg";
 import picTeamMeeting from "@/assets/pic-team-meeting.jpg";
-import picOffice from "@/assets/pic-office.jpg";
+import picOffice from "@/assets/pic-office-interior.jpg";
 import picProductionLine from "@/assets/pic-production-line.jpg";
 
 /* ------------------------------- HERO SLIDER ------------------------------ */
