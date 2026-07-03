@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { CATEGORIES, getServicesByCategory } from "@/data/services";
 
 type NavItem = { label: string; to: string; mega?: boolean };
 const NAV: NavItem[] = [
@@ -13,28 +14,10 @@ const NAV: NavItem[] = [
   { label: "Contact", to: "/contact" },
 ];
 
-const SERVICE_GROUPS = [
-  {
-    title: "Consulting & Strategy",
-    items: ["IT Consulting", "Digital Transformation", "Managed IT Services", "Quality Assurance"],
-  },
-  {
-    title: "Cloud & Data",
-    items: ["Cloud Services", "Cloud Migration", "DevOps", "Data Analytics", "Big Data", "Business Intelligence"],
-  },
-  {
-    title: "AI & Automation",
-    items: ["Artificial Intelligence", "Machine Learning", "Robotic Process Automation", "IoT", "Blockchain"],
-  },
-  {
-    title: "Industrial & Enterprise",
-    items: ["Industrial Automation", "PLC / SCADA / DCS / MES", "SAP", "Salesforce", "CRM Solutions"],
-  },
-  {
-    title: "Talent Solutions",
-    items: ["HR Recruitment", "Permanent Hiring", "Contract Staffing", "Global Talent Solutions"],
-  },
-];
+const SERVICE_GROUPS = CATEGORIES.map((cat) => ({
+  title: cat.name,
+  items: getServicesByCategory(cat.slug),
+}));
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -87,8 +70,8 @@ export function Navigation() {
                 </Link>
                 {megaOpen && (
                   <div className="absolute left-1/2 top-full -translate-x-1/2 pt-4">
-                    <div className="w-[820px] rounded-3xl glass-card p-8 shadow-elegant animate-fade-up">
-                      <div className="grid grid-cols-3 gap-6">
+                    <div className="w-240 max-w-[92vw] rounded-3xl glass-card p-8 shadow-elegant animate-fade-up">
+                      <div className="grid grid-cols-5 gap-6">
                         {SERVICE_GROUPS.map((g) => (
                           <div key={g.title}>
                             <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-primary">
@@ -96,18 +79,29 @@ export function Navigation() {
                             </p>
                             <ul className="space-y-2">
                               {g.items.map((s) => (
-                                <li key={s}>
+                                <li key={s.slug}>
                                   <Link
-                                    to="/services"
+                                    to="/services/$slug"
+                                    params={{ slug: s.slug }}
+                                    onClick={() => setMegaOpen(false)}
                                     className="text-sm text-foreground/75 hover:text-primary transition-colors"
                                   >
-                                    {s}
+                                    {s.name}
                                   </Link>
                                 </li>
                               ))}
                             </ul>
                           </div>
                         ))}
+                      </div>
+                      <div className="mt-6 border-t border-border/60 pt-5">
+                        <Link
+                          to="/services"
+                          onClick={() => setMegaOpen(false)}
+                          className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
+                        >
+                          View all services →
+                        </Link>
                       </div>
                     </div>
                   </div>
