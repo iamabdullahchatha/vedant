@@ -26,28 +26,28 @@ const SLIDES = [
     tags: ["Cloud", "Consulting", "Transformation"],
   },
   {
-    img: hero2,
+    img: picCircuit,
     eyebrow: "Artificial Intelligence Â· Automation",
     title: "Intelligent Automation\nfor the Future",
     sub: "AI, Machine Learning, RPA, Industry 4.0, Cloud and IoT â€” engineered for the world's most ambitious operations.",
     tags: ["AI", "Machine Learning", "RPA", "IoT"],
   },
   {
-    img: hero3,
+    img: picDataCenter,
     eyebrow: "Enterprise IT Consulting",
     title: "Transforming Businesses\nThrough Technology",
     sub: "Cloud, Cyber Security, Salesforce, ERP, Data and end-to-end digital transformation for the enterprise.",
     tags: ["Cloud", "Cyber Security", "Salesforce", "ERP"],
   },
   {
-    img: hero4,
+    img: picIndustry,
     eyebrow: "Manufacturing Â· Process Automation",
     title: "Powering Modern\nManufacturing",
     sub: "Smart factories, PLC, SCADA, MES and industrial robotics engineered for measurable production gains.",
     tags: ["PLC", "SCADA", "MES", "Industry 4.0"],
   },
   {
-    img: hero5,
+    img: picTeamMeeting,
     eyebrow: "Global Workforce Â· Talent Solutions",
     title: "Connecting Global Talent\nwith Global Businesses",
     sub: "Permanent, contract and managed talent for enterprises operating across 25+ countries.",
@@ -252,7 +252,7 @@ export function About() {
         >
           <div className="absolute -inset-6 rounded-3xl bg-gradient-brand opacity-20 blur-2xl" />
           <div className="relative overflow-hidden rounded-3xl shadow-elegant">
-            <img src={aboutImg} alt="Vedant Group office" className="h-full w-full object-cover" loading="lazy" />
+            <img src={picOffice} alt="Vedant Group office" className="h-full w-full object-cover" loading="lazy" />
           </div>
           <div className="absolute -bottom-8 -right-6 hidden md:block glass-card rounded-2xl px-6 py-5 shadow-elegant">
             <div className="text-3xl font-bold text-gradient-brand">15+</div>
@@ -438,7 +438,7 @@ const INDUSTRIES = [
 export function Industries() {
   return (
     <section className="relative py-28 px-4 sm:px-6 lg:px-8 bg-brand-navy text-white overflow-hidden">
-      <img src={hero4} alt="" className="absolute inset-0 h-full w-full object-cover opacity-20" loading="lazy" />
+      <img src={picIndustry} alt="" className="absolute inset-0 h-full w-full object-cover opacity-20" loading="lazy" />
       <div className="absolute inset-0 bg-brand-navy/70" />
       <div className="pointer-events-none absolute inset-0 opacity-30">
         <div className="absolute -top-40 left-1/4 h-96 w-96 rounded-full bg-brand-sky/50 blur-3xl" />
