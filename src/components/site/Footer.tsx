@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Linkedin, Twitter, Facebook, Instagram, Youtube, Mail, MapPin, Phone } from "lucide-react";
+import { Linkedin, Twitter, Facebook, Instagram, Youtube, Mail, MapPin } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const COLS = [
@@ -64,9 +64,8 @@ export function Footer() {
             </p>
 
             <div className="mt-6 space-y-3 text-sm text-white/80">
-              <div className="flex items-center gap-3"><MapPin className="h-4 w-4 text-brand-cyan" /> Global HQ · Mumbai · Dubai · New York</div>
-              <div className="flex items-center gap-3"><Mail className="h-4 w-4 text-brand-cyan" /> hello@vedantholdings.com</div>
-              <div className="flex items-center gap-3"><Phone className="h-4 w-4 text-brand-cyan" /> +91 22 0000 0000</div>
+              <div className="flex items-center gap-3"><MapPin className="h-4 w-4 text-brand-cyan" /> RAK Economic Free Zone, Ras Al Khaimah, UAE</div>
+              <div className="flex items-center gap-3"><Mail className="h-4 w-4 text-brand-cyan" /> Info@vedantsgroups.com</div>
             </div>
 
             <div className="mt-6 flex items-center gap-3">

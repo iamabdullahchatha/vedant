@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, Building2 } from "lucide-react";
+import { Mail, MapPin, Send, Building2 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 
@@ -18,12 +18,7 @@ export const Route = createFileRoute("/contact")({
 });
 
 const OFFICES = [
-  { city: "Mumbai · Global HQ", addr: "One World Center, Lower Parel, Mumbai 400013, India" },
-  { city: "New York", addr: "One World Trade Center, New York, NY 10007, USA" },
-  { city: "Dubai", addr: "Emirates Towers, Sheikh Zayed Rd, Dubai, UAE" },
-  { city: "London", addr: "The Shard, 32 London Bridge St, London SE1 9SG, UK" },
-  { city: "Singapore", addr: "Marina Bay Financial Centre, Singapore 018983" },
-  { city: "Tokyo", addr: "Roppongi Hills Mori Tower, Minato-ku, Tokyo 106-6108" },
+  { city: "Ras Al Khaimah · Global HQ", addr: "Vedant Consultancy Services Fz LLC, RAK Economic Free Zone, Ras Al Khaimah, UAE" },
 ];
 
 function ContactPage() {
@@ -44,17 +39,7 @@ function ContactPage() {
                 <div className="grid h-10 w-10 place-items-center rounded-lg bg-gradient-brand text-white"><Mail className="h-4 w-4" /></div>
                 <div>
                   <p className="text-xs uppercase tracking-widest text-muted-foreground">Email</p>
-                  <a href="mailto:hello@vedantholdings.com" className="mt-1 block font-semibold text-primary">hello@vedantholdings.com</a>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-2xl bg-gradient-soft border border-border/60 p-6">
-              <div className="flex items-start gap-4">
-                <div className="grid h-10 w-10 place-items-center rounded-lg bg-gradient-brand text-white"><Phone className="h-4 w-4" /></div>
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground">Phone</p>
-                  <p className="mt-1 font-semibold">+91 22 0000 0000</p>
-                  <p className="text-sm text-muted-foreground">+1 (212) 000-0000 · +971 4 000 0000</p>
+                  <a href="mailto:Info@vedantsgroups.com" className="mt-1 block font-semibold text-primary">Info@vedantsgroups.com</a>
                 </div>
               </div>
             </div>
@@ -62,9 +47,10 @@ function ContactPage() {
               <div className="flex items-start gap-4">
                 <div className="grid h-10 w-10 place-items-center rounded-lg bg-gradient-brand text-white"><Building2 className="h-4 w-4" /></div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground">Inquiries</p>
-                  <p className="mt-1 text-sm"><span className="font-semibold">Business:</span> business@vedantholdings.com</p>
-                  <p className="text-sm"><span className="font-semibold">Careers:</span> careers@vedantholdings.com</p>
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground">Address</p>
+                  <p className="mt-1 text-sm">Vedant Consultancy Services Fz LLC</p>
+                  <p className="text-sm">RAK Economic Free Zone</p>
+                  <p className="text-sm">Ras Al Khaimah, UAE</p>
                 </div>
               </div>
             </div>
