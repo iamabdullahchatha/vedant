@@ -1,4 +1,4 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+﻿import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
@@ -63,16 +63,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Vedant Holdings — Engineering Global Digital Excellence" },
-      { name: "description", content: "Vedant Holdings partners with global enterprises on digital transformation, cloud, AI, automation, Salesforce, SAP, industrial systems and world-class talent solutions across 25+ countries." },
-      { name: "author", content: "Vedant Holdings" },
+      { title: "Vedant Group â€” Engineering Global Digital Excellence" },
+      { name: "description", content: "Vedant Group partners with global enterprises on digital transformation, cloud, AI, automation, Salesforce, SAP, industrial systems and world-class talent solutions across 25+ countries." },
+      { name: "author", content: "Vedant Group" },
       { name: "theme-color", content: "#1E40AF" },
-      { property: "og:site_name", content: "Vedant Holdings" },
-      { property: "og:title", content: "Vedant Holdings — Engineering Global Digital Excellence" },
+      { property: "og:site_name", content: "Vedant Group" },
+      { property: "og:title", content: "Vedant Group â€” Engineering Global Digital Excellence" },
       { property: "og:description", content: "Enterprise consulting, cloud, AI, automation and global talent solutions for Fortune 500 businesses." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Vedant Holdings" },
+      { name: "twitter:title", content: "Vedant Group" },
       { name: "twitter:description", content: "Engineering global digital excellence for enterprises." },
     ],
     links: [
@@ -86,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       children: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Organization",
-        name: "Vedant Holdings",
+        name: "Vedant Group",
         url: "/",
         description: "Global enterprise consulting, cloud, AI, automation and talent solutions.",
         sameAs: [],

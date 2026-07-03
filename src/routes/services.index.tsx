@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -21,18 +21,20 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { CTA } from "@/components/site/home-sections";
 import { CATEGORIES, SERVICES } from "@/data/services";
+import servicesHero from "@/assets/pic-code.jpg";
+import servicesFeature from "@/assets/pic-global.jpg";
 
 export const Route = createFileRoute("/services/")({
   component: ServicesPage,
   head: () => ({
     meta: [
-      { title: "Services — Vedant Holdings" },
+      { title: "Services â€” Vedant Group" },
       {
         name: "description",
         content:
           "Enterprise consulting, cloud, AI, cyber security, industrial automation, Salesforce, SAP and global talent solutions.",
       },
-      { property: "og:title", content: "Services — Vedant Holdings" },
+      { property: "og:title", content: "Services â€” Vedant Group" },
       { property: "og:url", content: "/services" },
     ],
     links: [{ rel: "canonical", href: "/services" }],
@@ -45,7 +47,7 @@ const PILLARS = [
   {
     icon: Compass,
     title: "Digital Transformation",
-    desc: "End-to-end modernization of operations, platforms and customer experience — from strategy to measurable outcomes.",
+    desc: "End-to-end modernization of operations, platforms and customer experience â€” from strategy to measurable outcomes.",
   },
   {
     icon: Cloud,
@@ -55,7 +57,7 @@ const PILLARS = [
   {
     icon: Bot,
     title: "AI & Machine Learning",
-    desc: "Production-grade ML, computer vision, NLP and enterprise GenAI — governed, evaluated and MLOps-ready.",
+    desc: "Production-grade ML, computer vision, NLP and enterprise GenAI â€” governed, evaluated and MLOps-ready.",
   },
   {
     icon: Shield,
@@ -70,7 +72,7 @@ const PILLARS = [
   {
     icon: Cog,
     title: "Industrial Automation",
-    desc: "PLC, SCADA, DCS and MES for smart factories and Industry 4.0 — engineered for real production gains.",
+    desc: "PLC, SCADA, DCS and MES for smart factories and Industry 4.0 â€” engineered for real production gains.",
   },
   {
     icon: Cpu,
@@ -127,7 +129,8 @@ function ServicesPage() {
             </span>
           </>
         }
-        subtitle="From boardroom strategy to shop-floor automation — engineered by global teams, delivered with rigor."
+        subtitle="From boardroom strategy to shop-floor automation â€” engineered by global teams, delivered with rigor."
+        image={servicesHero}
       >
         <Link
           to="/contact"
@@ -148,7 +151,7 @@ function ServicesPage() {
               Eight pillars, <span className="text-gradient-brand">one accountable partner.</span>
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Deep expertise across every layer of the enterprise stack — combined into programs
+              Deep expertise across every layer of the enterprise stack â€” combined into programs
               that deliver measurable business outcomes.
             </p>
           </div>

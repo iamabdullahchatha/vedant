@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+﻿import { Link } from "@tanstack/react-router";
 import { Linkedin, Twitter, Facebook, Instagram, Youtube, Mail, MapPin } from "lucide-react";
 import logo from "@/assets/logo.png";
 
@@ -67,11 +67,11 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <div className="w-fit rounded-2xl bg-white px-4 py-3">
-              <img src={logo} alt="Vedant Holdings" className="h-10 w-auto" />
+              <img src={logo} alt="Vedant Group" className="h-10 w-auto" />
             </div>
             <p className="mt-6 text-sm leading-relaxed text-white/70 max-w-sm">
-              Vedant Holdings is a global enterprise consulting group engineering digital excellence
-              across cloud, AI, automation and world-class talent — trusted by leaders in 25+
+              Vedant Group is a global enterprise consulting group engineering digital excellence
+              across cloud, AI, automation and world-class talent â€” trusted by leaders in 25+
               countries.
             </p>
 
@@ -146,7 +146,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/50">
-          <p>© {new Date().getFullYear()} Vedant Holdings. All rights reserved.</p>
+          <p>Â© {new Date().getFullYear()} Vedant Group. All rights reserved.</p>
           <p>Engineered with precision across 25+ countries.</p>
         </div>
       </div>

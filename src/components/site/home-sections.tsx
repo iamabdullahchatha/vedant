@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+﻿import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
   ArrowRight, Cloud, Shield, Cpu, Database, Cog, Users, Globe2, Sparkles,
@@ -27,9 +27,9 @@ const SLIDES = [
   },
   {
     img: hero2,
-    eyebrow: "Artificial Intelligence · Automation",
+    eyebrow: "Artificial Intelligence Â· Automation",
     title: "Intelligent Automation\nfor the Future",
-    sub: "AI, Machine Learning, RPA, Industry 4.0, Cloud and IoT — engineered for the world's most ambitious operations.",
+    sub: "AI, Machine Learning, RPA, Industry 4.0, Cloud and IoT â€” engineered for the world's most ambitious operations.",
     tags: ["AI", "Machine Learning", "RPA", "IoT"],
   },
   {
@@ -41,14 +41,14 @@ const SLIDES = [
   },
   {
     img: hero4,
-    eyebrow: "Manufacturing · Process Automation",
+    eyebrow: "Manufacturing Â· Process Automation",
     title: "Powering Modern\nManufacturing",
     sub: "Smart factories, PLC, SCADA, MES and industrial robotics engineered for measurable production gains.",
     tags: ["PLC", "SCADA", "MES", "Industry 4.0"],
   },
   {
     img: hero5,
-    eyebrow: "Global Workforce · Talent Solutions",
+    eyebrow: "Global Workforce Â· Talent Solutions",
     title: "Connecting Global Talent\nwith Global Businesses",
     sub: "Permanent, contract and managed talent for enterprises operating across 25+ countries.",
     tags: ["Talent", "Hiring", "Global"],
@@ -185,7 +185,7 @@ export function Stats() {
     { value: 15, suffix: "+", label: "Years Experience" },
     { value: 1700, suffix: "+", label: "Salesforce Certifications" },
     { value: 3000, suffix: "+", label: "Projects Delivered" },
-    { value: 25, suffix: "+", label: "Countries · Global Presence" },
+    { value: 25, suffix: "+", label: "Countries Â· Global Presence" },
   ];
   return (
     <section className="relative -mt-24 z-20 px-4 sm:px-6 lg:px-8">
@@ -252,7 +252,7 @@ export function About() {
         >
           <div className="absolute -inset-6 rounded-3xl bg-gradient-brand opacity-20 blur-2xl" />
           <div className="relative overflow-hidden rounded-3xl shadow-elegant">
-            <img src={aboutImg} alt="Vedant Holdings office" className="h-full w-full object-cover" loading="lazy" />
+            <img src={aboutImg} alt="Vedant Group office" className="h-full w-full object-cover" loading="lazy" />
           </div>
           <div className="absolute -bottom-8 -right-6 hidden md:block glass-card rounded-2xl px-6 py-5 shadow-elegant">
             <div className="text-3xl font-bold text-gradient-brand">15+</div>
@@ -267,13 +267,13 @@ export function About() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="inline-flex items-center gap-2 rounded-full bg-brand-ice px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand-sky" /> About Vedant Holdings
+            <span className="h-1.5 w-1.5 rounded-full bg-brand-sky" /> About Vedant Group
           </span>
           <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
             A global partner for the <span className="text-gradient-brand">enterprise digital era.</span>
           </h2>
           <p className="mt-5 text-muted-foreground leading-relaxed">
-            Vedant Holdings is a global consulting and technology group serving Fortune-scale
+            Vedant Group is a global consulting and technology group serving Fortune-scale
             enterprises across 25+ countries. We combine deep engineering, industry expertise,
             and world-class talent to help clients transform faster, operate smarter, and lead
             their markets.
@@ -323,7 +323,7 @@ export function Services() {
             Enterprise services engineered for <span className="text-gradient-brand">scale, security and speed.</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
-            From boardroom strategy to shop-floor automation — a single global partner for the
+            From boardroom strategy to shop-floor automation â€” a single global partner for the
             entire enterprise technology lifecycle.
           </p>
         </div>
@@ -438,6 +438,8 @@ const INDUSTRIES = [
 export function Industries() {
   return (
     <section className="relative py-28 px-4 sm:px-6 lg:px-8 bg-brand-navy text-white overflow-hidden">
+      <img src={hero4} alt="" className="absolute inset-0 h-full w-full object-cover opacity-20" loading="lazy" />
+      <div className="absolute inset-0 bg-brand-navy/70" />
       <div className="pointer-events-none absolute inset-0 opacity-30">
         <div className="absolute -top-40 left-1/4 h-96 w-96 rounded-full bg-brand-sky/50 blur-3xl" />
         <div className="absolute -bottom-40 right-0 h-96 w-96 rounded-full bg-brand-cyan/40 blur-3xl" />
@@ -503,7 +505,7 @@ export function GlobalPresenceMap() {
             </h2>
             <p className="mt-4 text-muted-foreground">
               A follow-the-sun delivery model spanning North America, Europe, the Middle East,
-              India, APAC and beyond — one global standard of engineering excellence.
+              India, APAC and beyond â€” one global standard of engineering excellence.
             </p>
             <div className="mt-8 grid grid-cols-3 gap-2 max-w-md">
               {["USA", "Canada", "UK", "Germany", "France", "Ireland", "UAE", "KSA", "Qatar", "India", "Singapore", "Japan", "Australia", "China", "S. Korea"].map((c) => (
@@ -621,17 +623,17 @@ const TESTIMONIALS = [
   {
     quote: "Vedant re-engineered our cloud estate across three continents without a single hour of downtime. Their delivery discipline is genuinely world-class.",
     name: "Group CTO",
-    role: "Global Manufacturing · Fortune 500",
+    role: "Global Manufacturing Â· Fortune 500",
   },
   {
     quote: "The Salesforce and data programs paid for themselves within two quarters. A partner that speaks both the boardroom and the shop floor.",
     name: "VP, Digital",
-    role: "Energy & Utilities · Europe",
+    role: "Energy & Utilities Â· Europe",
   },
   {
     quote: "From AI proof-of-concept to production in weeks, with governance we could actually stand behind. Exactly the pace our market demanded.",
     name: "Chief Data Officer",
-    role: "BFSI · Middle East",
+    role: "BFSI Â· Middle East",
   },
 ];
 
@@ -699,7 +701,7 @@ export function CTA() {
               </h2>
               <p className="mt-4 text-white/85 max-w-xl">
                 Talk to a Vedant expert. Get a tailored roadmap for transformation, automation
-                or global talent — in a single working session.
+                or global talent â€” in a single working session.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row lg:justify-end gap-3">

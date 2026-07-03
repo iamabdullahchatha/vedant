@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+﻿import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -7,14 +7,15 @@ import {
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
+import contactHero from "@/assets/pic-city.jpg";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
   head: () => ({
     meta: [
-      { title: "Contact — Vedant Holdings" },
-      { name: "description", content: "Talk to a Vedant Holdings expert. Reach our global HQ in the RAK Economic Free Zone, UAE — we respond within one business day." },
-      { property: "og:title", content: "Contact — Vedant Holdings" },
+      { title: "Contact â€” Vedant Group" },
+      { name: "description", content: "Talk to a Vedant Group expert. Reach our global HQ in the RAK Economic Free Zone, UAE â€” we respond within one business day." },
+      { property: "og:title", content: "Contact â€” Vedant Group" },
       { property: "og:url", content: "/contact" },
     ],
     links: [{ rel: "canonical", href: "/contact" }],
@@ -39,7 +40,7 @@ const INFO = [
   {
     icon: Clock,
     label: "Business hours",
-    lines: ["Sunday – Thursday", "9:00 – 18:00 (GST)"],
+    lines: ["Sunday â€“ Thursday", "9:00 â€“ 18:00 (GST)"],
   },
 ];
 
@@ -54,6 +55,7 @@ function ContactPage() {
         eyebrow="Contact"
         title={<>Let's engineer <span className="text-gradient-brand bg-clip-text">your next chapter.</span></>}
         subtitle="Reach a senior partner directly. We respond within one business day, anywhere in the world."
+        image={contactHero}
       />
 
       {/* Contact info + form */}
@@ -152,7 +154,7 @@ function ContactPage() {
                 <>
                   <h2 className="text-2xl font-bold">Start a conversation</h2>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Tell us about your goals — the more context, the sharper our first response.
+                    Tell us about your goals â€” the more context, the sharper our first response.
                   </p>
                   <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <Field label="Full name" name="name" placeholder="Jane Doe" />
@@ -169,7 +171,7 @@ function ContactPage() {
                       required
                       className="mt-2 w-full rounded-xl border border-border bg-white px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition"
                     >
-                      <option value="" disabled>Select an inquiry type…</option>
+                      <option value="" disabled>Select an inquiry typeâ€¦</option>
                       <option>New project or consultation</option>
                       <option>Cloud, AI &amp; automation</option>
                       <option>Salesforce / SAP / ERP</option>
@@ -187,14 +189,14 @@ function ContactPage() {
                       name="message"
                       rows={5}
                       required
-                      placeholder="Tell us about your project, timelines and goals…"
+                      placeholder="Tell us about your project, timelines and goalsâ€¦"
                       className="mt-2 w-full rounded-xl border border-border bg-white px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition"
                     />
                   </label>
 
                   <label className="mt-4 flex items-start gap-3 text-sm text-muted-foreground">
                     <input type="checkbox" required className="mt-1 h-4 w-4 rounded border-border text-primary focus:ring-primary/30" />
-                    <span>I agree to be contacted by Vedant Holdings regarding my inquiry.</span>
+                    <span>I agree to be contacted by Vedant Group regarding my inquiry.</span>
                   </label>
 
                   <button className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-brand animate-gradient px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-elegant hover:scale-[1.02] transition-transform">

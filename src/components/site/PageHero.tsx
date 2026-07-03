@@ -2,10 +2,17 @@ import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 
 export function PageHero({
-  eyebrow, title, subtitle, children,
-}: { eyebrow?: string; title: ReactNode; subtitle?: ReactNode; children?: ReactNode }) {
+  eyebrow, title, subtitle, children, image,
+}: { eyebrow?: string; title: ReactNode; subtitle?: ReactNode; children?: ReactNode; image?: string }) {
   return (
     <section className="relative overflow-hidden bg-brand-navy text-white pt-40 pb-24 px-4 sm:px-6 lg:px-8">
+      {image && (
+        <div className="absolute inset-0">
+          <img src={image} alt="" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-brand-navy/85" />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/70 to-brand-navy/40" />
+        </div>
+      )}
       <div className="pointer-events-none absolute inset-0 opacity-40">
         <div className="absolute -top-20 left-1/4 h-96 w-96 rounded-full bg-brand-sky/50 blur-3xl animate-float" />
         <div className="absolute -bottom-40 right-0 h-[500px] w-[500px] rounded-full bg-brand-cyan/40 blur-3xl animate-float" style={{ animationDelay: "2s" }} />

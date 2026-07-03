@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+﻿import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, Compass, PenTool,
@@ -8,13 +8,26 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { CTA } from "@/components/site/home-sections";
 import { getServiceBySlug, getCategory, getServicesByCategory } from "@/data/services";
+import hero2 from "@/assets/hero-2.jpg";
+import hero3 from "@/assets/hero-3.jpg";
+import hero4 from "@/assets/hero-4.jpg";
+import hero5 from "@/assets/hero-5.jpg";
+import officeImg from "@/assets/about-office.jpg";
+
+const CATEGORY_IMAGE: Record<string, string> = {
+  "consulting-transformation": hero3,
+  "cloud-data-security": hero2,
+  "ai-automation": hero2,
+  "industrial-enterprise": hero4,
+  "talent-solutions": hero5,
+};
 
 export const Route = createFileRoute("/services/$slug")({
   component: ServiceDetailPage,
   head: ({ params }) => {
     const service = getServiceBySlug(params.slug);
-    const title = service ? `${service.name} — Vedant Holdings` : "Service — Vedant Holdings";
-    const description = service?.description ?? "Enterprise services from Vedant Holdings.";
+    const title = service ? `${service.name} â€” Vedant Group` : "Service â€” Vedant Group";
+    const description = service?.description ?? "Enterprise services from Vedant Group.";
     return {
       meta: [
         { title },
@@ -37,7 +50,7 @@ export const Route = createFileRoute("/services/$slug")({
               areaServed: "Worldwide",
               provider: {
                 "@type": "Organization",
-                name: "Vedant Holdings",
+                name: "Vedant Group",
                 url: "/",
               },
             }),
@@ -55,7 +68,7 @@ const STEPS = [
 ];
 
 const GLANCE = [
-  { icon: Globe2, label: "Delivery", value: "Global · 25+ countries" },
+  { icon: Globe2, label: "Delivery", value: "Global Â· 25+ countries" },
   { icon: ShieldCheck, label: "Teams", value: "Certified specialists" },
   { icon: Layers, label: "Engagement", value: "Flexible models" },
 ];
@@ -95,6 +108,11 @@ function ServiceDetailPage() {
     <SiteLayout>
       {/* Hero */}
       <section className="relative overflow-hidden bg-brand-navy text-white pt-36 pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="absolute inset-0">
+          <img src={CATEGORY_IMAGE[service.categorySlug] ?? officeImg} alt="" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-brand-navy/85" />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/70 to-brand-navy/40" />
+        </div>
         <div className="pointer-events-none absolute inset-0 opacity-40">
           <div className="absolute -top-20 left-1/4 h-96 w-96 rounded-full bg-brand-sky/50 blur-3xl animate-float" />
           <div className="absolute -bottom-40 right-0 h-[500px] w-[500px] rounded-full bg-brand-cyan/40 blur-3xl animate-float" style={{ animationDelay: "2s" }} />
@@ -172,10 +190,20 @@ function ServiceDetailPage() {
               </h2>
               <p className="mt-5 text-muted-foreground leading-relaxed">{service.description}</p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                Delivered by Vedant Holdings' global teams across 25+ countries, every engagement
+                Delivered by Vedant Group' global teams across 25+ countries, every engagement
                 combines deep domain expertise, certified specialists and a delivery model built for
                 security, quality and measurable business outcomes.
               </p>
+
+              <div className="relative mt-8 overflow-hidden rounded-3xl shadow-elegant">
+                <img
+                  src={officeImg}
+                  alt={`${service.name} delivery at Vedant Group`}
+                  className="aspect-[16/9] h-full w-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/45 to-transparent" />
+              </div>
             </motion.div>
 
             {/* What's included */}
@@ -263,7 +291,7 @@ function ServiceDetailPage() {
                 </div>
                 <h3 className="mt-5 text-lg font-semibold">Talk to a {service.name} expert</h3>
                 <p className="mt-2 text-sm text-white/70 leading-relaxed">
-                  Get a tailored proposal and a clear plan — a senior partner responds within one
+                  Get a tailored proposal and a clear plan â€” a senior partner responds within one
                   business day.
                 </p>
                 <Link

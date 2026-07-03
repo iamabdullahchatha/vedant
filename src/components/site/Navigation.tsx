@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+﻿import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo.png";
@@ -32,7 +32,7 @@ export function Navigation() {
   }, []);
 
   // Header sits over a dark hero at the top of every page, and over a light
-  // surface once scrolled — so link colors flip to stay readable in both states.
+  // surface once scrolled â€” so link colors flip to stay readable in both states.
   const linkBase = scrolled
     ? "text-foreground/70 hover:text-primary hover:bg-primary/5"
     : "text-white/85 hover:text-white hover:bg-white/10";
@@ -50,9 +50,9 @@ export function Navigation() {
         <Link
           to="/"
           className="flex items-center gap-2 shrink-0"
-          aria-label="Vedant Holdings — home"
+          aria-label="Vedant Group â€” home"
         >
-          <img src={logo} alt="Vedant Holdings" className="h-10 w-auto" />
+          <img src={logo} alt="Vedant Group" className="h-10 w-auto" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
@@ -104,7 +104,7 @@ export function Navigation() {
                           onClick={() => setMegaOpen(false)}
                           className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary"
                         >
-                          View all services →
+                          View all services â†’
                         </Link>
                       </div>
                     </div>
@@ -130,7 +130,7 @@ export function Navigation() {
             className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-brand animate-gradient px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-elegant transition-transform hover:scale-105"
           >
             Get Consultation
-            <span className="transition-transform group-hover:translate-x-0.5">→</span>
+            <span className="transition-transform group-hover:translate-x-0.5">â†’</span>
           </Link>
         </div>
 
