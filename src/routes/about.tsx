@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
-import { About as AboutSection, WhyChoose, Process, CTA } from "@/components/site/home-sections";
+import { About as AboutSection, Stats, WhyChoose, Process, Testimonials, CTA } from "@/components/site/home-sections";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
@@ -26,9 +26,11 @@ function AboutPage() {
       >
         <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary shadow-elegant">Talk to us</Link>
       </PageHero>
+      <div className="mt-8"><Stats /></div>
       <AboutSection />
       <WhyChoose />
       <Process />
+      <Testimonials />
       <CTA />
     </SiteLayout>
   );

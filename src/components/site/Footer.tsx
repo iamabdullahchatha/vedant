@@ -1,14 +1,14 @@
 import { Link } from "@tanstack/react-router";
 import { Linkedin, Twitter, Facebook, Instagram, Youtube, Mail, MapPin, Phone } from "lucide-react";
-import logo from "@/assets/vedant-logo.asset.json";
+import logo from "@/assets/logo.png";
 
 const COLS = [
   {
     title: "Company",
     links: [
       ["About", "/about"],
-      ["Why Vedant", "/why-vedant"],
-      ["Global Presence", "/global-presence"],
+      ["Industries", "/industries"],
+      ["FAQs", "/faqs"],
       ["Contact", "/contact"],
     ],
   },
@@ -54,8 +54,8 @@ export function Footer() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <div className="rounded-2xl bg-white/95 p-3 w-fit">
-              <img src={logo.url} alt="Vedant Holdings" className="h-10 w-auto" />
+            <div className="w-fit rounded-2xl bg-white px-4 py-3">
+              <img src={logo} alt="Vedant Holdings" className="h-10 w-auto" />
             </div>
             <p className="mt-6 text-sm leading-relaxed text-white/70 max-w-sm">
               Vedant Holdings is a global enterprise consulting group engineering digital

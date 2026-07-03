@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
-import logo from "@/assets/vedant-logo.asset.json";
+import logo from "@/assets/logo.png";
 
 type NavItem = { label: string; to: string; mega?: boolean };
 const NAV: NavItem[] = [
@@ -9,8 +9,6 @@ const NAV: NavItem[] = [
   { label: "About", to: "/about" },
   { label: "Services", to: "/services", mega: true },
   { label: "Industries", to: "/industries" },
-  { label: "Global Presence", to: "/global-presence" },
-  { label: "Why Vedant", to: "/why-vedant" },
   { label: "FAQs", to: "/faqs" },
   { label: "Contact", to: "/contact" },
 ];
@@ -59,8 +57,8 @@ export function Navigation() {
       }`}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-2 shrink-0">
-          <img src={logo.url} alt="Vedant Holdings" className="h-10 w-auto" />
+        <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="Vedant Holdings — home">
+          <img src={logo} alt="Vedant Holdings" className="h-10 w-auto" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">

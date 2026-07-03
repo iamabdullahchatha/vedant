@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import {
-  HeroSlider, Stats, About, Services, WhyChoose, Industries,
-  GlobalPresenceMap, Process, CTA,
+  HeroSlider, Stats, TrustedBy, About, Services, WhyChoose, Industries,
+  GlobalPresenceMap, Process, Testimonials, CTA,
 } from "@/components/site/home-sections";
 
 export const Route = createFileRoute("/")({
@@ -23,12 +23,14 @@ function Home() {
     <SiteLayout>
       <HeroSlider />
       <Stats />
+      <TrustedBy />
       <About />
       <Services />
       <WhyChoose />
       <Industries />
       <GlobalPresenceMap />
       <Process />
+      <Testimonials />
       <CTA />
     </SiteLayout>
   );

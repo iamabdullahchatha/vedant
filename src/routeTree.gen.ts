@@ -9,21 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WhyVedantRouteImport } from './routes/why-vedant'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as IndustriesRouteImport } from './routes/industries'
-import { Route as GlobalPresenceRouteImport } from './routes/global-presence'
 import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
-const WhyVedantRoute = WhyVedantRouteImport.update({
-  id: '/why-vedant',
-  path: '/why-vedant',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -37,11 +30,6 @@ const ServicesRoute = ServicesRouteImport.update({
 const IndustriesRoute = IndustriesRouteImport.update({
   id: '/industries',
   path: '/industries',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GlobalPresenceRoute = GlobalPresenceRouteImport.update({
-  id: '/global-presence',
-  path: '/global-presence',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqsRoute = FaqsRouteImport.update({
@@ -70,22 +58,18 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
-  '/global-presence': typeof GlobalPresenceRoute
   '/industries': typeof IndustriesRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/why-vedant': typeof WhyVedantRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
-  '/global-presence': typeof GlobalPresenceRoute
   '/industries': typeof IndustriesRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/why-vedant': typeof WhyVedantRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -93,11 +77,9 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
-  '/global-presence': typeof GlobalPresenceRoute
   '/industries': typeof IndustriesRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/why-vedant': typeof WhyVedantRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -106,33 +88,27 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/faqs'
-    | '/global-presence'
     | '/industries'
     | '/services'
     | '/sitemap.xml'
-    | '/why-vedant'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/contact'
     | '/faqs'
-    | '/global-presence'
     | '/industries'
     | '/services'
     | '/sitemap.xml'
-    | '/why-vedant'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/contact'
     | '/faqs'
-    | '/global-presence'
     | '/industries'
     | '/services'
     | '/sitemap.xml'
-    | '/why-vedant'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -140,22 +116,13 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   FaqsRoute: typeof FaqsRoute
-  GlobalPresenceRoute: typeof GlobalPresenceRoute
   IndustriesRoute: typeof IndustriesRoute
   ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  WhyVedantRoute: typeof WhyVedantRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/why-vedant': {
-      id: '/why-vedant'
-      path: '/why-vedant'
-      fullPath: '/why-vedant'
-      preLoaderRoute: typeof WhyVedantRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -175,13 +142,6 @@ declare module '@tanstack/react-router' {
       path: '/industries'
       fullPath: '/industries'
       preLoaderRoute: typeof IndustriesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/global-presence': {
-      id: '/global-presence'
-      path: '/global-presence'
-      fullPath: '/global-presence'
-      preLoaderRoute: typeof GlobalPresenceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faqs': {
@@ -220,12 +180,20 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   FaqsRoute: FaqsRoute,
-  GlobalPresenceRoute: GlobalPresenceRoute,
   IndustriesRoute: IndustriesRoute,
   ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  WhyVedantRoute: WhyVedantRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

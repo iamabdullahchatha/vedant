@@ -4,7 +4,7 @@ import {
   ArrowRight, Cloud, Shield, Cpu, Database, Cog, Users, Globe2, Sparkles,
   Zap, LineChart, Bot, Factory, HeartPulse, Landmark, ShoppingBag, Fuel,
   Radio, Building2, Truck, Car, CheckCircle2, Compass, ClipboardList,
-  PenTool, Code2, Rocket, LifeBuoy, Star,
+  PenTool, Code2, Rocket, LifeBuoy, Star, Quote,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
@@ -205,6 +205,38 @@ export function Stats() {
   );
 }
 
+/* ------------------------------- TRUSTED BY ------------------------------- */
+
+const PARTNERS = [
+  "AWS", "Microsoft Azure", "Google Cloud", "Salesforce", "SAP", "Oracle",
+  "ServiceNow", "Snowflake", "Databricks", "Siemens", "Rockwell", "NVIDIA",
+];
+
+export function TrustedBy() {
+  const row = [...PARTNERS, ...PARTNERS];
+  return (
+    <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+          Trusted across the world's leading enterprise platforms
+        </p>
+        <div className="relative mt-8 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+          <div className="flex w-max animate-marquee items-center gap-4">
+            {row.map((p, i) => (
+              <span
+                key={p + i}
+                className="whitespace-nowrap rounded-full border border-border/60 bg-white px-6 py-3 text-sm font-semibold text-foreground/70 shadow-card-soft"
+              >
+                {p}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------------------------- ABOUT --------------------------------- */
 
 export function About() {
@@ -359,7 +391,7 @@ export function WhyChoose() {
               The advantages of working with <span className="text-gradient-brand">a truly global partner.</span>
             </h2>
           </div>
-          <Link to="/why-vedant" className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
+          <Link to="/about" className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
             Read the full story <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -577,6 +609,72 @@ export function Process() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------ TESTIMONIALS ------------------------------ */
+
+const TESTIMONIALS = [
+  {
+    quote: "Vedant re-engineered our cloud estate across three continents without a single hour of downtime. Their delivery discipline is genuinely world-class.",
+    name: "Group CTO",
+    role: "Global Manufacturing · Fortune 500",
+  },
+  {
+    quote: "The Salesforce and data programs paid for themselves within two quarters. A partner that speaks both the boardroom and the shop floor.",
+    name: "VP, Digital",
+    role: "Energy & Utilities · Europe",
+  },
+  {
+    quote: "From AI proof-of-concept to production in weeks, with governance we could actually stand behind. Exactly the pace our market demanded.",
+    name: "Chief Data Officer",
+    role: "BFSI · Middle East",
+  },
+];
+
+export function Testimonials() {
+  return (
+    <section className="py-28 px-4 sm:px-6 lg:px-8 bg-gradient-soft">
+      <div className="mx-auto max-w-7xl">
+        <div className="max-w-3xl">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary shadow-card-soft">
+            Client Voices
+          </span>
+          <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
+            Outcomes that leaders <span className="text-gradient-brand">talk about.</span>
+          </h2>
+        </div>
+
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {TESTIMONIALS.map((t, i) => (
+            <motion.figure
+              key={t.role}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: i * 0.08 }}
+              className="group relative flex flex-col rounded-3xl border border-border/60 bg-white p-8 shadow-card-soft hover:shadow-elegant transition-all"
+            >
+              <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-brand text-white shadow-card-soft">
+                <Quote className="h-5 w-5" />
+              </div>
+              <blockquote className="mt-6 flex-1 text-base leading-relaxed text-foreground/85">
+                "{t.quote}"
+              </blockquote>
+              <div className="mt-6 flex items-center gap-1 text-brand-cyan">
+                {Array.from({ length: 5 }).map((_, s) => (
+                  <Star key={s} className="h-4 w-4 fill-current" />
+                ))}
+              </div>
+              <figcaption className="mt-4 border-t border-border/60 pt-4">
+                <p className="font-semibold">{t.name}</p>
+                <p className="text-sm text-muted-foreground">{t.role}</p>
+              </figcaption>
+            </motion.figure>
+          ))}
         </div>
       </div>
     </section>
