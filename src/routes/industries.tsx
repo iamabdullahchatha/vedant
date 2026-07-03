@@ -79,8 +79,8 @@ function IndustriesPage() {
               Ten industries. One bar for excellence.
             </h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              Every industry below links to the specific challenges we solve, how we solve them,
-              and the services we deploy to get there.
+              Every industry below links to the specific challenges we solve, how we solve them, and
+              the services we deploy to get there.
             </p>
           </motion.div>
 
@@ -103,22 +103,31 @@ function IndustriesPage() {
                       <Icon className="h-7 w-7" />
                     </div>
                     <div className="text-right">
-                      <div className="text-2xl font-bold text-brand-navy">{industry.stat.value}</div>
+                      <div className="text-2xl font-bold text-brand-navy">
+                        {industry.stat.value}
+                      </div>
                       <div className="max-w-35 text-xs text-muted-foreground leading-snug">
                         {industry.stat.label}
                       </div>
                     </div>
                   </div>
 
-                  <h3 className="relative mt-6 text-xl font-bold text-brand-navy">{industry.name}</h3>
-                  <p className="relative mt-2 text-sm font-medium text-brand-royal">{industry.tagline}</p>
+                  <h3 className="relative mt-6 text-xl font-bold text-brand-navy">
+                    {industry.name}
+                  </h3>
+                  <p className="relative mt-2 text-sm font-medium text-brand-royal">
+                    {industry.tagline}
+                  </p>
                   <p className="relative mt-4 text-sm text-muted-foreground leading-relaxed">
                     {industry.challenge}
                   </p>
 
                   <ul className="relative mt-6 space-y-2.5">
                     {industry.solutions.map((solution) => (
-                      <li key={solution} className="flex items-start gap-2.5 text-sm text-foreground/85">
+                      <li
+                        key={solution}
+                        className="flex items-start gap-2.5 text-sm text-foreground/85"
+                      >
                         <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-cyan" />
                         <span>{solution}</span>
                       </li>

@@ -6,7 +6,10 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { CTA } from "@/components/site/home-sections";
 import {
-  Accordion, AccordionContent, AccordionItem, AccordionTrigger,
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
 } from "@/components/ui/accordion";
 import faqsHero from "@/assets/pic-team-meeting.jpg";
 
@@ -27,35 +30,126 @@ export const Route = createFileRoute("/faqs")({
   }),
 });
 
-type Category = "General" | "Security & Compliance" | "Technology & Services" | "Talent & Recruitment" | "Delivery & Support";
+type Category =
+  | "General"
+  | "Security & Compliance"
+  | "Technology & Services"
+  | "Talent & Recruitment"
+  | "Delivery & Support";
 
 type FaqItem = { id: number; category: Category; q: string; a: string };
 
 const RAW_FAQS: Omit<FaqItem, "id">[] = [
-  { category: "General", q: "What industries does Vedant Group serve?", a: "We serve manufacturing, BFSI, healthcare, life sciences, energy, utilities, telecom, government, retail, logistics and automotive â€” with dedicated domain-expert teams for each." },
-  { category: "General", q: "Which countries do you operate in?", a: "Vedant operates across 25+ countries including the USA, Canada, UK, Ireland, Germany, France, Switzerland, Poland, Sweden, UAE, Saudi Arabia, Oman, Qatar, Kuwait, India, Singapore, Malaysia, Japan, Australia, China and South Korea." },
-  { category: "General", q: "What engagement models do you offer?", a: "We work on fixed-scope projects, dedicated teams, managed services, staff augmentation and outcome-based commercial models." },
-  { category: "General", q: "How do you price engagements?", a: "Fixed-scope, T&M, dedicated capacity or outcome-based â€” we tailor commercials to the engagement." },
-  { category: "General", q: "Do you support digital transformation for mid-market clients?", a: "Yes. We work with both Fortune 500 enterprises and high-growth mid-market organizations." },
-  { category: "General", q: "How do I start a conversation?", a: "Use the contact form or request a consultation â€” a senior partner will respond within one business day." },
-  { category: "Security & Compliance", q: "How do you ensure security and compliance?", a: "We follow ISO 27001-aligned processes, zero-trust architecture, secure SDLC, and regional data-residency compliance including GDPR and HIPAA where applicable." },
-  { category: "Security & Compliance", q: "Which regulations are you familiar with?", a: "GDPR, HIPAA, PCI-DSS, SOX, ISO 27001, ISO 9001, GxP and regional compliance frameworks." },
-  { category: "Technology & Services", q: "Do you work with Salesforce and SAP?", a: "Yes â€” we have 1700+ Salesforce certifications and deep SAP capability across consulting, implementation, integration and managed services." },
-  { category: "Technology & Services", q: "Do you support industrial automation?", a: "Absolutely. We deliver PLC, SCADA, DCS, MES and Industry 4.0 solutions for smart factories globally." },
-  { category: "Technology & Services", q: "What cloud platforms do you support?", a: "AWS, Microsoft Azure, Google Cloud, Oracle Cloud and hybrid/private deployments." },
-  { category: "Technology & Services", q: "How do you approach AI and Generative AI?", a: "We build production-grade ML, computer vision, NLP and enterprise GenAI solutions with governance, evaluation and MLOps baked in." },
-  { category: "Technology & Services", q: "Do you offer proof-of-concept engagements?", a: "Yes. Short, outcome-focused PoCs are a common starting point for AI, automation and cloud initiatives." },
-  { category: "Technology & Services", q: "Can you integrate with existing ERP/CRM systems?", a: "Yes. We deliver integrations across SAP, Salesforce, Oracle, Microsoft Dynamics and custom platforms." },
-  { category: "Talent & Recruitment", q: "Can you scale a team quickly?", a: "Yes. Our global talent network can mobilize certified specialists in days across most technologies." },
-  { category: "Talent & Recruitment", q: "Can Vedant help with recruitment?", a: "Yes. Permanent hiring, contract staffing and RPO across technology, engineering and enterprise functions globally." },
-  { category: "Delivery & Support", q: "What is your average project delivery timeline?", a: "Typical engagements range from 8-week accelerators to multi-year global transformation programs, with clearly defined milestones." },
-  { category: "Delivery & Support", q: "Do you provide 24/7 managed services?", a: "Yes. Follow-the-sun support with defined SLAs is available for infrastructure, applications, cybersecurity and data platforms." },
-  { category: "Delivery & Support", q: "What is your approach to change management?", a: "Structured governance, executive enablement, training academies and adoption analytics â€” outcomes, not just go-lives." },
-  { category: "Delivery & Support", q: "How do you measure success?", a: "Business KPIs are defined upfront and tracked through every phase, with executive-level dashboards and QBRs." },
+  {
+    category: "General",
+    q: "What industries does Vedant Group serve?",
+    a: "We serve manufacturing, BFSI, healthcare, life sciences, energy, utilities, telecom, government, retail, logistics and automotive â€” with dedicated domain-expert teams for each.",
+  },
+  {
+    category: "General",
+    q: "Which countries do you operate in?",
+    a: "Vedant operates across 25+ countries including the USA, Canada, UK, Ireland, Germany, France, Switzerland, Poland, Sweden, UAE, Saudi Arabia, Oman, Qatar, Kuwait, India, Singapore, Malaysia, Japan, Australia, China and South Korea.",
+  },
+  {
+    category: "General",
+    q: "What engagement models do you offer?",
+    a: "We work on fixed-scope projects, dedicated teams, managed services, staff augmentation and outcome-based commercial models.",
+  },
+  {
+    category: "General",
+    q: "How do you price engagements?",
+    a: "Fixed-scope, T&M, dedicated capacity or outcome-based â€” we tailor commercials to the engagement.",
+  },
+  {
+    category: "General",
+    q: "Do you support digital transformation for mid-market clients?",
+    a: "Yes. We work with both Fortune 500 enterprises and high-growth mid-market organizations.",
+  },
+  {
+    category: "General",
+    q: "How do I start a conversation?",
+    a: "Use the contact form or request a consultation â€” a senior partner will respond within one business day.",
+  },
+  {
+    category: "Security & Compliance",
+    q: "How do you ensure security and compliance?",
+    a: "We follow ISO 27001-aligned processes, zero-trust architecture, secure SDLC, and regional data-residency compliance including GDPR and HIPAA where applicable.",
+  },
+  {
+    category: "Security & Compliance",
+    q: "Which regulations are you familiar with?",
+    a: "GDPR, HIPAA, PCI-DSS, SOX, ISO 27001, ISO 9001, GxP and regional compliance frameworks.",
+  },
+  {
+    category: "Technology & Services",
+    q: "Do you work with Salesforce and SAP?",
+    a: "Yes â€” we have 1700+ Salesforce certifications and deep SAP capability across consulting, implementation, integration and managed services.",
+  },
+  {
+    category: "Technology & Services",
+    q: "Do you support industrial automation?",
+    a: "Absolutely. We deliver PLC, SCADA, DCS, MES and Industry 4.0 solutions for smart factories globally.",
+  },
+  {
+    category: "Technology & Services",
+    q: "What cloud platforms do you support?",
+    a: "AWS, Microsoft Azure, Google Cloud, Oracle Cloud and hybrid/private deployments.",
+  },
+  {
+    category: "Technology & Services",
+    q: "How do you approach AI and Generative AI?",
+    a: "We build production-grade ML, computer vision, NLP and enterprise GenAI solutions with governance, evaluation and MLOps baked in.",
+  },
+  {
+    category: "Technology & Services",
+    q: "Do you offer proof-of-concept engagements?",
+    a: "Yes. Short, outcome-focused PoCs are a common starting point for AI, automation and cloud initiatives.",
+  },
+  {
+    category: "Technology & Services",
+    q: "Can you integrate with existing ERP/CRM systems?",
+    a: "Yes. We deliver integrations across SAP, Salesforce, Oracle, Microsoft Dynamics and custom platforms.",
+  },
+  {
+    category: "Talent & Recruitment",
+    q: "Can you scale a team quickly?",
+    a: "Yes. Our global talent network can mobilize certified specialists in days across most technologies.",
+  },
+  {
+    category: "Talent & Recruitment",
+    q: "Can Vedant help with recruitment?",
+    a: "Yes. Permanent hiring, contract staffing and RPO across technology, engineering and enterprise functions globally.",
+  },
+  {
+    category: "Delivery & Support",
+    q: "What is your average project delivery timeline?",
+    a: "Typical engagements range from 8-week accelerators to multi-year global transformation programs, with clearly defined milestones.",
+  },
+  {
+    category: "Delivery & Support",
+    q: "Do you provide 24/7 managed services?",
+    a: "Yes. Follow-the-sun support with defined SLAs is available for infrastructure, applications, cybersecurity and data platforms.",
+  },
+  {
+    category: "Delivery & Support",
+    q: "What is your approach to change management?",
+    a: "Structured governance, executive enablement, training academies and adoption analytics â€” outcomes, not just go-lives.",
+  },
+  {
+    category: "Delivery & Support",
+    q: "How do you measure success?",
+    a: "Business KPIs are defined upfront and tracked through every phase, with executive-level dashboards and QBRs.",
+  },
 ];
 
 const FAQS: FaqItem[] = RAW_FAQS.map((item, id) => ({ ...item, id }));
-const CATEGORIES: Category[] = ["General", "Security & Compliance", "Technology & Services", "Talent & Recruitment", "Delivery & Support"];
+const CATEGORIES: Category[] = [
+  "General",
+  "Security & Compliance",
+  "Technology & Services",
+  "Talent & Recruitment",
+  "Delivery & Support",
+];
 
 function FAQPage() {
   const [search, setSearch] = useState("");
@@ -192,7 +286,9 @@ function FAQPage() {
                   className="flex flex-col items-center rounded-3xl border border-dashed border-border/60 bg-secondary/40 py-16 text-center"
                 >
                   <MessageCircleQuestion className="h-10 w-10 text-muted-foreground" />
-                  <p className="mt-4 text-sm font-medium text-foreground">No questions match your search.</p>
+                  <p className="mt-4 text-sm font-medium text-foreground">
+                    No questions match your search.
+                  </p>
                   <button
                     type="button"
                     onClick={clearFilters}

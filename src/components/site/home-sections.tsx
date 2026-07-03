@@ -7,6 +7,7 @@ import {
   PenTool, Code2, Rocket, LifeBuoy, Star, Quote,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { Tilt3D } from "./Tilt3D";
 
 import picGlobal from "@/assets/pic-global.jpg";
 import picCircuit from "@/assets/pic-circuit.jpg";
@@ -188,19 +189,21 @@ export function Stats() {
     { value: 25, suffix: "+", label: "Countries Â· Global Presence" },
   ];
   return (
-    <section className="relative -mt-24 z-20 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl rounded-3xl glass-card p-8 md:p-12 shadow-elegant">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {items.map((s) => (
-            <div key={s.label} className="text-center md:text-left">
-              <div className="text-5xl md:text-6xl font-bold text-gradient-brand font-[var(--font-display)]">
-                <Counter to={s.value} suffix={s.suffix} />
+    <section className="relative -mt-24 z-20 px-4 sm:px-6 lg:px-8 perspective-1000">
+      <Tilt3D max={4} glare={false} className="mx-auto max-w-7xl rounded-3xl">
+        <div className="rounded-3xl glass-card p-8 md:p-12 shadow-elegant">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {items.map((s) => (
+              <div key={s.label} className="text-center md:text-left">
+                <div className="text-5xl md:text-6xl font-bold text-gradient-brand font-[var(--font-display)]">
+                  <Counter to={s.value} suffix={s.suffix} />
+                </div>
+                <p className="mt-2 text-sm text-muted-foreground">{s.label}</p>
               </div>
-              <p className="mt-2 text-sm text-muted-foreground">{s.label}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      </Tilt3D>
     </section>
   );
 }
@@ -328,7 +331,7 @@ export function Services() {
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 perspective-1000">
           {SERVICES.map((s, i) => (
             <motion.div
               key={s.title}
@@ -336,19 +339,22 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.05 }}
-              className="group relative overflow-hidden rounded-2xl border border-border/60 bg-white p-6 shadow-card-soft hover:shadow-elegant transition-all hover:-translate-y-1"
             >
-              <div className="absolute -top-16 -right-16 h-40 w-40 rounded-full bg-gradient-brand opacity-0 group-hover:opacity-20 blur-2xl transition-opacity" />
-              <div className="relative">
-                <div className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-brand text-white shadow-card-soft">
-                  <s.icon className="h-5 w-5" />
+              <Tilt3D max={10} className="h-full rounded-2xl">
+                <div className="group relative h-full overflow-hidden rounded-2xl border border-border/60 bg-white p-6 shadow-card-soft transition-shadow hover:shadow-elegant">
+                  <div className="absolute -top-16 -right-16 h-40 w-40 rounded-full bg-gradient-brand opacity-0 group-hover:opacity-20 blur-2xl transition-opacity" />
+                  <div className="relative">
+                    <div className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-brand text-white shadow-card-soft">
+                      <s.icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-5 text-lg font-semibold">{s.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                    <Link to="/services" className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary group-hover:gap-2 transition-all">
+                      Learn more <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
                 </div>
-                <h3 className="mt-5 text-lg font-semibold">{s.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-                <Link to="/services" className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary group-hover:gap-2 transition-all">
-                  Learn more <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
+              </Tilt3D>
             </motion.div>
           ))}
         </div>
@@ -396,7 +402,7 @@ export function WhyChoose() {
           </Link>
         </div>
 
-        <div className="mt-14 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="mt-14 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 perspective-1000">
           {WHY.map((w, i) => (
             <motion.div
               key={w.title}
@@ -404,12 +410,15 @@ export function WhyChoose() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.03 }}
-              className="group rounded-2xl border border-border/60 bg-white p-5 hover:border-primary/40 hover:shadow-card-soft transition-all"
             >
-              <div className="grid h-10 w-10 place-items-center rounded-lg bg-brand-ice text-primary group-hover:bg-gradient-brand group-hover:text-white transition-all">
-                <w.icon className="h-4.5 w-4.5" />
-              </div>
-              <p className="mt-4 text-sm font-semibold">{w.title}</p>
+              <Tilt3D max={12} className="rounded-2xl">
+                <div className="group rounded-2xl border border-border/60 bg-white p-5 transition-shadow hover:border-primary/40 hover:shadow-card-soft">
+                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-brand-ice text-primary group-hover:bg-gradient-brand group-hover:text-white transition-all">
+                    <w.icon className="h-4.5 w-4.5" />
+                  </div>
+                  <p className="mt-4 text-sm font-semibold">{w.title}</p>
+                </div>
+              </Tilt3D>
             </motion.div>
           ))}
         </div>
@@ -456,7 +465,7 @@ export function Industries() {
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="mt-14 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 perspective-1000">
           {INDUSTRIES.map((it, i) => (
             <motion.div
               key={it.name + i}
@@ -464,11 +473,14 @@ export function Industries() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.03 }}
-              className="group rounded-2xl glass-dark p-6 hover:border-brand-cyan/50 transition-all"
             >
-              <it.icon className="h-6 w-6 text-brand-cyan group-hover:scale-110 transition-transform" />
-              <p className="mt-5 font-semibold">{it.name}</p>
-              <p className="mt-1 text-xs text-white/60">Enterprise solutions & transformation.</p>
+              <Tilt3D max={12} className="rounded-2xl">
+                <div className="group rounded-2xl glass-dark p-6 transition-colors hover:border-brand-cyan/50">
+                  <it.icon className="h-6 w-6 text-brand-cyan group-hover:scale-110 transition-transform" />
+                  <p className="mt-5 font-semibold">{it.name}</p>
+                  <p className="mt-1 text-xs text-white/60">Enterprise solutions & transformation.</p>
+                </div>
+              </Tilt3D>
             </motion.div>
           ))}
         </div>

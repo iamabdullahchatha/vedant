@@ -1,5 +1,6 @@
 ﻿import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useSpring, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { CATEGORIES, getServicesByCategory } from "@/data/services";
@@ -18,6 +19,49 @@ const SERVICE_GROUPS = CATEGORIES.map((cat) => ({
   title: cat.name,
   items: getServicesByCategory(cat.slug),
 }));
+
+function LogoMark({ scrolled }: { scrolled: boolean }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const rotateX = useSpring(0, { stiffness: 250, damping: 18 });
+  const rotateY = useSpring(0, { stiffness: 250, damping: 18 });
+
+  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    rotateY.set(px * 30);
+    rotateX.set(-py * 30);
+  };
+  const onMouseLeave = () => {
+    rotateX.set(0);
+    rotateY.set(0);
+  };
+
+  return (
+    <div className="perspective-1000">
+      <motion.div
+        ref={ref}
+        onMouseMove={onMouseMove}
+        onMouseLeave={onMouseLeave}
+        style={{ rotateX, rotateY, transformPerspective: 700 }}
+        className="preserve-3d relative rounded-2xl p-1.5"
+        initial={{ opacity: 0, rotateY: -25, z: -20 }}
+        animate={{ opacity: 1, rotateY: 0, z: 0 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div
+          className={`absolute inset-0 rounded-2xl bg-gradient-brand blur-md transition-opacity duration-300 ${
+            scrolled ? "opacity-0" : "opacity-30"
+          }`}
+          style={{ transform: "translateZ(-12px)" }}
+        />
+        <img src={logo} alt="Vedant Group" className="relative h-10 w-auto drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)]" />
+      </motion.div>
+    </div>
+  );
+}
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -46,13 +90,18 @@ export function Navigation() {
           : "bg-transparent"
       }`}
     >
+      {/* animated accent line — reads as a light beam traveling under the header */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px overflow-hidden opacity-60">
+        <div className="h-full w-1/3 bg-gradient-to-r from-transparent via-brand-cyan to-transparent animate-marquee" />
+      </div>
+
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           to="/"
           className="flex items-center gap-2 shrink-0"
           aria-label="Vedant Group â€” home"
         >
-          <img src={logo} alt="Vedant Group" className="h-10 w-auto" />
+          <LogoMark scrolled={scrolled} />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
@@ -72,9 +121,17 @@ export function Navigation() {
                   {item.label}
                   <ChevronDown className="h-3.5 w-3.5" />
                 </Link>
-                {megaOpen && (
-                  <div className="absolute left-1/2 top-full -translate-x-1/2 pt-4">
-                    <div className="w-240 max-w-[92vw] rounded-3xl glass-card p-8 shadow-elegant animate-fade-up">
+                <AnimatePresence>
+                  {megaOpen && (
+                  <div className="absolute left-1/2 top-full -translate-x-1/2 pt-4 perspective-1600">
+                    <motion.div
+                      initial={{ opacity: 0, rotateX: -12, y: -16, scale: 0.96 }}
+                      animate={{ opacity: 1, rotateX: 0, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, rotateX: -8, y: -10, scale: 0.98 }}
+                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                      style={{ transformOrigin: "top center", transformPerspective: 1200 }}
+                      className="w-240 max-w-[92vw] rounded-3xl glass-card p-8 shadow-elegant"
+                    >
                       <div className="grid grid-cols-5 gap-6">
                         {SERVICE_GROUPS.map((g) => (
                           <div key={g.title}>
@@ -107,9 +164,10 @@ export function Navigation() {
                           View all services â†’
                         </Link>
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
-                )}
+                  )}
+                </AnimatePresence>
               </div>
             ) : (
               <Link
@@ -124,11 +182,12 @@ export function Navigation() {
           )}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden lg:block perspective-1000">
           <Link
             to="/contact"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-brand animate-gradient px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-elegant transition-transform hover:scale-105"
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-brand animate-gradient px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-elegant transition-transform duration-300 hover:-translate-y-0.5 hover:transform-[perspective(600px)_rotateX(8deg)_translateY(-2px)]"
           >
+            <span className="pointer-events-none absolute inset-0 -translate-x-full bg-white/25 skew-x-12 transition-transform duration-700 group-hover:translate-x-full" />
             Get Consultation
             <span className="transition-transform group-hover:translate-x-0.5">â†’</span>
           </Link>
@@ -143,8 +202,16 @@ export function Navigation() {
         </button>
       </div>
 
-      {open && (
-        <div className="lg:hidden border-t border-border/60 bg-background/95 backdrop-blur-xl">
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, rotateX: -15, y: -12 }}
+            animate={{ opacity: 1, rotateX: 0, y: 0 }}
+            exit={{ opacity: 0, rotateX: -10, y: -8 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            style={{ transformOrigin: "top center", transformPerspective: 1200 }}
+            className="lg:hidden border-t border-border/60 bg-background/95 backdrop-blur-xl"
+          >
           <div className="mx-auto max-w-7xl px-4 py-4 flex flex-col gap-1">
             {NAV.map((item) => (
               <Link
@@ -164,8 +231,9 @@ export function Navigation() {
               Get Consultation
             </Link>
           </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

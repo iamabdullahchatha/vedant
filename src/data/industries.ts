@@ -1,5 +1,14 @@
 import {
-  Factory, Fuel, HeartPulse, Landmark, ShoppingBag, Zap, Radio, Building2, Truck, Car,
+  Factory,
+  Fuel,
+  HeartPulse,
+  Landmark,
+  ShoppingBag,
+  Zap,
+  Radio,
+  Building2,
+  Truck,
+  Car,
   type LucideIcon,
 } from "lucide-react";
 

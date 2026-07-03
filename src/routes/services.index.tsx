@@ -197,8 +197,8 @@ function ServicesPage() {
                   One partner. Global scale. Measurable outcomes.
                 </h3>
                 <p className="mt-3 text-white/80 leading-relaxed">
-                  From strategy to run, our teams deliver across 25+ countries with a single standard
-                  of engineering excellence.
+                  From strategy to run, our teams deliver across 25+ countries with a single
+                  standard of engineering excellence.
                 </p>
                 <Link
                   to="/contact"
