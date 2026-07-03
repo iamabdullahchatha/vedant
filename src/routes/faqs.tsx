@@ -11,7 +11,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import faqsHero from "@/assets/pic-team-meeting.jpg";
+import faqsHero from "@/assets/pic-helpdesk.jpg";
 
 export const Route = createFileRoute("/faqs")({
   component: FAQPage,

@@ -11,10 +11,11 @@ import { Tilt3D } from "./Tilt3D";
 
 import picGlobal from "@/assets/pic-global.jpg";
 import picCircuit from "@/assets/pic-circuit.jpg";
-import picDataCenter from "@/assets/pic-data-center.jpg";
+import picWorkstation from "@/assets/pic-workstation.jpg";
 import picIndustry from "@/assets/pic-industry.jpg";
 import picTeamMeeting from "@/assets/pic-team-meeting.jpg";
 import picOffice from "@/assets/pic-office.jpg";
+import picProductionLine from "@/assets/pic-production-line.jpg";
 
 /* ------------------------------- HERO SLIDER ------------------------------ */
 
@@ -34,7 +35,7 @@ const SLIDES = [
     tags: ["AI", "Machine Learning", "RPA", "IoT"],
   },
   {
-    img: picDataCenter,
+    img: picWorkstation,
     eyebrow: "Enterprise IT Consulting",
     title: "Transforming Businesses\nThrough Technology",
     sub: "Cloud, Cyber Security, Salesforce, ERP, Data and end-to-end digital transformation for the enterprise.",
@@ -81,10 +82,14 @@ export function HeroSlider() {
         </motion.div>
       </AnimatePresence>
 
-      {/* floating orbs */}
-      <div className="pointer-events-none absolute inset-0">
+      {/* floating orbs with 3D depth rings */}
+      <div className="pointer-events-none absolute inset-0 perspective-1000">
         <div className="absolute top-1/4 left-1/3 h-72 w-72 rounded-full bg-brand-sky/30 blur-3xl animate-float" />
         <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-brand-cyan/20 blur-3xl animate-float" style={{ animationDelay: "2s" }} />
+        <div className="absolute right-[12%] top-[18%] hidden lg:block preserve-3d opacity-60">
+          <div className="h-32 w-32 rounded-full border border-white/20 animate-spin-slow" style={{ transform: "rotateX(65deg)" }} />
+          <div className="absolute inset-3 rounded-full border border-brand-cyan/30 animate-spin-slow-reverse" style={{ transform: "rotateX(65deg)" }} />
+        </div>
       </div>
 
       <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end pb-24 pt-32 px-4 sm:px-6 lg:px-8">
@@ -251,13 +256,15 @@ export function About() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative"
+          className="relative perspective-1000"
         >
           <div className="absolute -inset-6 rounded-3xl bg-gradient-brand opacity-20 blur-2xl" />
-          <div className="relative overflow-hidden rounded-3xl shadow-elegant">
-            <img src={picOffice} alt="Vedant Group office" className="h-full w-full object-cover" loading="lazy" />
-          </div>
-          <div className="absolute -bottom-8 -right-6 hidden md:block glass-card rounded-2xl px-6 py-5 shadow-elegant">
+          <Tilt3D max={7} scale={1.015} className="relative rounded-3xl">
+            <div className="relative overflow-hidden rounded-3xl shadow-elegant">
+              <img src={picOffice} alt="Vedant Group office" className="h-full w-full object-cover" loading="lazy" />
+            </div>
+          </Tilt3D>
+          <div className="absolute -bottom-8 -right-6 hidden md:block glass-card rounded-2xl px-6 py-5 shadow-elegant animate-float">
             <div className="text-3xl font-bold text-gradient-brand">15+</div>
             <p className="text-xs text-muted-foreground mt-1">Years engineering<br />global outcomes</p>
           </div>
@@ -447,7 +454,7 @@ const INDUSTRIES = [
 export function Industries() {
   return (
     <section className="relative py-28 px-4 sm:px-6 lg:px-8 bg-brand-navy text-white overflow-hidden">
-      <img src={picIndustry} alt="" className="absolute inset-0 h-full w-full object-cover opacity-20" loading="lazy" />
+      <img src={picProductionLine} alt="" className="absolute inset-0 h-full w-full object-cover opacity-20" loading="lazy" />
       <div className="absolute inset-0 bg-brand-navy/70" />
       <div className="pointer-events-none absolute inset-0 opacity-30">
         <div className="absolute -top-40 left-1/4 h-96 w-96 rounded-full bg-brand-sky/50 blur-3xl" />
@@ -662,32 +669,35 @@ export function Testimonials() {
           </h2>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6 perspective-1000">
           {TESTIMONIALS.map((t, i) => (
-            <motion.figure
+            <motion.div
               key={t.role}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="group relative flex flex-col rounded-3xl border border-border/60 bg-white p-8 shadow-card-soft hover:shadow-elegant transition-all"
             >
-              <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-brand text-white shadow-card-soft">
-                <Quote className="h-5 w-5" />
-              </div>
-              <blockquote className="mt-6 flex-1 text-base leading-relaxed text-foreground/85">
-                "{t.quote}"
-              </blockquote>
-              <div className="mt-6 flex items-center gap-1 text-brand-cyan">
-                {Array.from({ length: 5 }).map((_, s) => (
-                  <Star key={s} className="h-4 w-4 fill-current" />
-                ))}
-              </div>
-              <figcaption className="mt-4 border-t border-border/60 pt-4">
-                <p className="font-semibold">{t.name}</p>
-                <p className="text-sm text-muted-foreground">{t.role}</p>
-              </figcaption>
-            </motion.figure>
+              <Tilt3D max={8} className="h-full rounded-3xl">
+                <figure className="group relative flex h-full flex-col rounded-3xl border border-border/60 bg-white p-8 shadow-card-soft transition-shadow hover:shadow-elegant">
+                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-brand text-white shadow-card-soft">
+                    <Quote className="h-5 w-5" />
+                  </div>
+                  <blockquote className="mt-6 flex-1 text-base leading-relaxed text-foreground/85">
+                    "{t.quote}"
+                  </blockquote>
+                  <div className="mt-6 flex items-center gap-1 text-brand-cyan">
+                    {Array.from({ length: 5 }).map((_, s) => (
+                      <Star key={s} className="h-4 w-4 fill-current" />
+                    ))}
+                  </div>
+                  <figcaption className="mt-4 border-t border-border/60 pt-4">
+                    <p className="font-semibold">{t.name}</p>
+                    <p className="text-sm text-muted-foreground">{t.role}</p>
+                  </figcaption>
+                </figure>
+              </Tilt3D>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -699,12 +709,13 @@ export function Testimonials() {
 
 export function CTA() {
   return (
-    <section className="py-28 px-4 sm:px-6 lg:px-8">
+    <section className="py-28 px-4 sm:px-6 lg:px-8 perspective-1000">
       <div className="mx-auto max-w-7xl">
+        <Tilt3D max={4} glare={false} className="rounded-[2rem]">
         <div className="relative overflow-hidden rounded-[2rem] bg-gradient-brand animate-gradient p-10 md:p-16 shadow-elegant">
           <div className="pointer-events-none absolute inset-0">
-            <div className="absolute -top-20 -right-20 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
-            <div className="absolute -bottom-20 -left-20 h-96 w-96 rounded-full bg-brand-cyan/30 blur-3xl" />
+            <div className="absolute -top-20 -right-20 h-96 w-96 rounded-full bg-white/10 blur-3xl animate-float" />
+            <div className="absolute -bottom-20 -left-20 h-96 w-96 rounded-full bg-brand-cyan/30 blur-3xl animate-float" style={{ animationDelay: "1.5s" }} />
           </div>
           <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
@@ -726,6 +737,7 @@ export function CTA() {
             </div>
           </div>
         </div>
+        </Tilt3D>
       </div>
     </section>
   );

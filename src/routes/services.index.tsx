@@ -22,7 +22,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { CTA } from "@/components/site/home-sections";
 import { CATEGORIES, SERVICES } from "@/data/services";
 import servicesHero from "@/assets/pic-code.jpg";
-import servicesFeature from "@/assets/pic-global.jpg";
+import servicesFeature from "@/assets/pic-network-globe.jpg";
 
 export const Route = createFileRoute("/services/")({
   component: ServicesPage,

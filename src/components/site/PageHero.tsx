@@ -13,9 +13,13 @@ export function PageHero({
           <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/70 to-brand-navy/40" />
         </div>
       )}
-      <div className="pointer-events-none absolute inset-0 opacity-40">
+      <div className="pointer-events-none absolute inset-0 opacity-40 perspective-1000">
         <div className="absolute -top-20 left-1/4 h-96 w-96 rounded-full bg-brand-sky/50 blur-3xl animate-float" />
         <div className="absolute -bottom-40 right-0 h-[500px] w-[500px] rounded-full bg-brand-cyan/40 blur-3xl animate-float" style={{ animationDelay: "2s" }} />
+        <div className="absolute right-[10%] top-10 hidden lg:block preserve-3d opacity-70">
+          <div className="h-28 w-28 rounded-full border border-white/25 animate-spin-slow" style={{ transform: "rotateX(65deg)" }} />
+          <div className="absolute inset-3 rounded-full border border-brand-cyan/30 animate-spin-slow-reverse" style={{ transform: "rotateX(65deg)" }} />
+        </div>
       </div>
       <div className="absolute inset-0 opacity-20" style={{
         backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.35) 1px, transparent 0)",

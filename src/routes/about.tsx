@@ -2,7 +2,7 @@
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { About as AboutSection, Stats, WhyChoose, Process, Testimonials, CTA } from "@/components/site/home-sections";
-import aboutHero from "@/assets/pic-collaboration.jpg";
+import aboutHero from "@/assets/pic-skyline-office.jpg";
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,

@@ -6,7 +6,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { Stats, CTA } from "@/components/site/home-sections";
 import { INDUSTRIES } from "@/data/industries";
 import { getServiceBySlug } from "@/data/services";
-import industriesHero from "@/assets/pic-industry.jpg";
+import industriesHero from "@/assets/pic-industrial-plant.jpg";
 
 export const Route = createFileRoute("/industries")({
   component: IndustriesPage,
