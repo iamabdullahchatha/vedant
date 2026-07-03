@@ -8,18 +8,18 @@ import {
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
-import hero1 from "@/assets/hero-1.jpg";
-import hero2 from "@/assets/hero-2.jpg";
-import hero3 from "@/assets/hero-3.jpg";
-import hero4 from "@/assets/hero-4.jpg";
-import hero5 from "@/assets/hero-5.jpg";
-import aboutImg from "@/assets/about-office.jpg";
+import picGlobal from "@/assets/pic-global.jpg";
+import picCircuit from "@/assets/pic-circuit.jpg";
+import picDataCenter from "@/assets/pic-data-center.jpg";
+import picIndustry from "@/assets/pic-industry.jpg";
+import picTeamMeeting from "@/assets/pic-team-meeting.jpg";
+import picOffice from "@/assets/pic-office.jpg";
 
 /* ------------------------------- HERO SLIDER ------------------------------ */
 
 const SLIDES = [
   {
-    img: hero1,
+    img: picGlobal,
     eyebrow: "Global Digital Transformation",
     title: "Engineering Global\nDigital Excellence",
     sub: "Helping enterprises transform through technology, automation, cloud solutions and world-class consulting.",
