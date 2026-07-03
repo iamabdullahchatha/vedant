@@ -10,17 +10,29 @@ import { CTA } from "@/components/site/home-sections";
 import { getServiceBySlug, getCategory, getServicesByCategory } from "@/data/services";
 import picCollaboration from "@/assets/pic-collaboration.jpg";
 import picDataCenter from "@/assets/pic-data-center.jpg";
-import picCircuit from "@/assets/pic-circuit.jpg";
-import picIndustry from "@/assets/pic-industry.jpg";
-import picTeamMeeting from "@/assets/pic-team-meeting.jpg";
+import picRobotArm from "@/assets/pic-robot-arm.jpg";
+import picFactoryFloor from "@/assets/pic-factory-floor.jpg";
+import picRecruitment from "@/assets/pic-recruitment.jpg";
 import picHandshake from "@/assets/pic-handshake.jpg";
+import picConsultingDiscussion from "@/assets/pic-consulting-discussion.jpg";
+import picCybersecurity from "@/assets/pic-cybersecurity.jpg";
+import picAiDashboard from "@/assets/pic-ai-dashboard.jpg";
+import picPlantEngineer from "@/assets/pic-plant-engineer.jpg";
 
 const CATEGORY_IMAGE: Record<string, string> = {
   "consulting-transformation": picCollaboration,
   "cloud-data-security": picDataCenter,
-  "ai-automation": picCircuit,
-  "industrial-enterprise": picIndustry,
-  "talent-solutions": picTeamMeeting,
+  "ai-automation": picRobotArm,
+  "industrial-enterprise": picFactoryFloor,
+  "talent-solutions": picRecruitment,
+};
+
+const CATEGORY_OVERVIEW_IMAGE: Record<string, string> = {
+  "consulting-transformation": picConsultingDiscussion,
+  "cloud-data-security": picCybersecurity,
+  "ai-automation": picAiDashboard,
+  "industrial-enterprise": picPlantEngineer,
+  "talent-solutions": picHandshake,
 };
 
 export const Route = createFileRoute("/services/$slug")({
@@ -198,7 +210,7 @@ function ServiceDetailPage() {
 
               <div className="relative mt-8 overflow-hidden rounded-3xl shadow-elegant">
                 <img
-                  src={picHandshake}
+                  src={CATEGORY_OVERVIEW_IMAGE[service.categorySlug] ?? picHandshake}
                   alt={`${service.name} delivery at Vedant Group`}
                   className="aspect-[16/9] h-full w-full object-cover"
                   loading="lazy"
