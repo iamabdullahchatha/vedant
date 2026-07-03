@@ -1,8 +1,21 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
-  ArrowRight, Compass, Cloud, Bot, Shield, Database, Cog, Cpu, Users,
-  CheckCircle2, Layers, Handshake, Gauge, Repeat, Target,
+  ArrowRight,
+  Compass,
+  Cloud,
+  Bot,
+  Shield,
+  Database,
+  Cog,
+  Cpu,
+  Users,
+  CheckCircle2,
+  Layers,
+  Handshake,
+  Gauge,
+  Repeat,
+  Target,
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
@@ -14,7 +27,11 @@ export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
       { title: "Services — Vedant Holdings" },
-      { name: "description", content: "Enterprise consulting, cloud, AI, cyber security, industrial automation, Salesforce, SAP and global talent solutions." },
+      {
+        name: "description",
+        content:
+          "Enterprise consulting, cloud, AI, cyber security, industrial automation, Salesforce, SAP and global talent solutions.",
+      },
       { property: "og:title", content: "Services — Vedant Holdings" },
       { property: "og:url", content: "/services" },
     ],
@@ -25,24 +42,76 @@ export const Route = createFileRoute("/services/")({
 /* --------------------------- FEATURED PILLARS ----------------------------- */
 
 const PILLARS = [
-  { icon: Compass, title: "Digital Transformation", desc: "End-to-end modernization of operations, platforms and customer experience — from strategy to measurable outcomes." },
-  { icon: Cloud, title: "Cloud & DevOps", desc: "Migration, cloud-native engineering and automated delivery pipelines on AWS, Azure, GCP and Oracle Cloud." },
-  { icon: Bot, title: "AI & Machine Learning", desc: "Production-grade ML, computer vision, NLP and enterprise GenAI — governed, evaluated and MLOps-ready." },
-  { icon: Shield, title: "Cyber Security", desc: "Zero-trust architecture, SOC operations, secure SDLC and enterprise resilience across regulated industries." },
-  { icon: Database, title: "Data, BI & Analytics", desc: "Modern data platforms, big-data pipelines and executive dashboards that turn data into decisions." },
-  { icon: Cog, title: "Industrial Automation", desc: "PLC, SCADA, DCS and MES for smart factories and Industry 4.0 — engineered for real production gains." },
-  { icon: Cpu, title: "Salesforce & SAP", desc: "Consulting, implementation and integration backed by 1700+ Salesforce certifications and deep SAP capability." },
-  { icon: Users, title: "Global Talent Solutions", desc: "Permanent hiring, contract staffing and managed teams mobilized across 25+ countries in days, not months." },
+  {
+    icon: Compass,
+    title: "Digital Transformation",
+    desc: "End-to-end modernization of operations, platforms and customer experience — from strategy to measurable outcomes.",
+  },
+  {
+    icon: Cloud,
+    title: "Cloud & DevOps",
+    desc: "Migration, cloud-native engineering and automated delivery pipelines on AWS, Azure, GCP and Oracle Cloud.",
+  },
+  {
+    icon: Bot,
+    title: "AI & Machine Learning",
+    desc: "Production-grade ML, computer vision, NLP and enterprise GenAI — governed, evaluated and MLOps-ready.",
+  },
+  {
+    icon: Shield,
+    title: "Cyber Security",
+    desc: "Zero-trust architecture, SOC operations, secure SDLC and enterprise resilience across regulated industries.",
+  },
+  {
+    icon: Database,
+    title: "Data, BI & Analytics",
+    desc: "Modern data platforms, big-data pipelines and executive dashboards that turn data into decisions.",
+  },
+  {
+    icon: Cog,
+    title: "Industrial Automation",
+    desc: "PLC, SCADA, DCS and MES for smart factories and Industry 4.0 — engineered for real production gains.",
+  },
+  {
+    icon: Cpu,
+    title: "Salesforce & SAP",
+    desc: "Consulting, implementation and integration backed by 1700+ Salesforce certifications and deep SAP capability.",
+  },
+  {
+    icon: Users,
+    title: "Global Talent Solutions",
+    desc: "Permanent hiring, contract staffing and managed teams mobilized across 25+ countries in days, not months.",
+  },
 ];
 
 /* --------------------------- ENGAGEMENT MODELS ---------------------------- */
 
 const MODELS = [
-  { icon: Target, title: "Fixed-Scope Projects", desc: "Clear deliverables, milestones and price for well-defined outcomes." },
-  { icon: Layers, title: "Dedicated Teams", desc: "Ring-fenced squads that scale with your roadmap and own delivery." },
-  { icon: Gauge, title: "Managed Services", desc: "24/7 follow-the-sun operations with defined SLAs and QBRs." },
-  { icon: Repeat, title: "Staff Augmentation", desc: "Certified specialists embedded into your teams within days." },
-  { icon: Handshake, title: "Outcome-Based", desc: "Commercials tied to the business KPIs that actually matter." },
+  {
+    icon: Target,
+    title: "Fixed-Scope Projects",
+    desc: "Clear deliverables, milestones and price for well-defined outcomes.",
+  },
+  {
+    icon: Layers,
+    title: "Dedicated Teams",
+    desc: "Ring-fenced squads that scale with your roadmap and own delivery.",
+  },
+  {
+    icon: Gauge,
+    title: "Managed Services",
+    desc: "24/7 follow-the-sun operations with defined SLAs and QBRs.",
+  },
+  {
+    icon: Repeat,
+    title: "Staff Augmentation",
+    desc: "Certified specialists embedded into your teams within days.",
+  },
+  {
+    icon: Handshake,
+    title: "Outcome-Based",
+    desc: "Commercials tied to the business KPIs that actually matter.",
+  },
 ];
 
 function ServicesPage() {
@@ -50,10 +119,20 @@ function ServicesPage() {
     <SiteLayout>
       <PageHero
         eyebrow="Services"
-        title={<>One partner for the <span className="text-gradient-brand bg-clip-text">entire enterprise technology lifecycle.</span></>}
+        title={
+          <>
+            One partner for the{" "}
+            <span className="text-gradient-brand bg-clip-text">
+              entire enterprise technology lifecycle.
+            </span>
+          </>
+        }
         subtitle="From boardroom strategy to shop-floor automation — engineered by global teams, delivered with rigor."
       >
-        <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary shadow-elegant hover:scale-[1.03] transition-transform">
+        <Link
+          to="/contact"
+          className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary shadow-elegant hover:scale-[1.03] transition-transform"
+        >
           Discuss your roadmap <ArrowRight className="h-4 w-4" />
         </Link>
       </PageHero>
@@ -62,7 +141,9 @@ function ServicesPage() {
       <section className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full bg-brand-ice px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">Core capabilities</span>
+            <span className="inline-flex items-center gap-2 rounded-full bg-brand-ice px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
+              Core capabilities
+            </span>
             <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
               Eight pillars, <span className="text-gradient-brand">one accountable partner.</span>
             </h2>
@@ -100,12 +181,15 @@ function ServicesPage() {
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-soft">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary shadow-card-soft">Full catalog</span>
+            <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary shadow-card-soft">
+              Full catalog
+            </span>
             <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
               Every service, <span className="text-gradient-brand">enterprise-grade.</span>
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Click any service below for a full breakdown of capabilities, business impact and how we engage.
+              Click any service below for a full breakdown of capabilities, business impact and how
+              we engage.
             </p>
           </div>
 
@@ -119,7 +203,9 @@ function ServicesPage() {
                       <cat.icon className="h-5 w-5" />
                     </div>
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-widest text-primary">Category 0{ci + 1}</p>
+                      <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                        Category 0{ci + 1}
+                      </p>
                       <h3 className="text-2xl md:text-3xl font-bold">{cat.name}</h3>
                     </div>
                     <div className="hidden md:block h-px flex-1 bg-gradient-to-r from-border to-transparent ml-2" />
@@ -160,7 +246,9 @@ function ServicesPage() {
       <section className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full bg-brand-ice px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">How we engage</span>
+            <span className="inline-flex items-center gap-2 rounded-full bg-brand-ice px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
+              How we engage
+            </span>
             <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
               Flexible models that fit <span className="text-gradient-brand">how you work.</span>
             </h2>

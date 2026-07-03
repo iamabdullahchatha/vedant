@@ -47,7 +47,11 @@ export function Navigation() {
       }`}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="Vedant Holdings — home">
+        <Link
+          to="/"
+          className="flex items-center gap-2 shrink-0"
+          aria-label="Vedant Holdings — home"
+        >
           <img src={logo} alt="Vedant Holdings" className="h-10 w-auto" />
         </Link>
 

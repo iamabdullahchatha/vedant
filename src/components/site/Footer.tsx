@@ -15,11 +15,23 @@ const COLS = [
   {
     title: "Services",
     links: [
-      { label: "Digital Transformation", to: "/services/$slug", params: { slug: "digital-transformation" } },
+      {
+        label: "Digital Transformation",
+        to: "/services/$slug",
+        params: { slug: "digital-transformation" },
+      },
       { label: "Cloud Services", to: "/services/$slug", params: { slug: "cloud-services" } },
-      { label: "Artificial Intelligence", to: "/services/$slug", params: { slug: "artificial-intelligence" } },
+      {
+        label: "Artificial Intelligence",
+        to: "/services/$slug",
+        params: { slug: "artificial-intelligence" },
+      },
       { label: "SAP", to: "/services/$slug", params: { slug: "sap" } },
-      { label: "Global Talent Solutions", to: "/services/$slug", params: { slug: "global-talent-solutions" } },
+      {
+        label: "Global Talent Solutions",
+        to: "/services/$slug",
+        params: { slug: "global-talent-solutions" },
+      },
     ],
   },
   {
@@ -58,14 +70,19 @@ export function Footer() {
               <img src={logo} alt="Vedant Holdings" className="h-10 w-auto" />
             </div>
             <p className="mt-6 text-sm leading-relaxed text-white/70 max-w-sm">
-              Vedant Holdings is a global enterprise consulting group engineering digital
-              excellence across cloud, AI, automation and world-class talent — trusted by leaders
-              in 25+ countries.
+              Vedant Holdings is a global enterprise consulting group engineering digital excellence
+              across cloud, AI, automation and world-class talent — trusted by leaders in 25+
+              countries.
             </p>
 
             <div className="mt-6 space-y-3 text-sm text-white/80">
-              <div className="flex items-center gap-3"><MapPin className="h-4 w-4 text-brand-cyan" /> RAK Economic Free Zone, Ras Al Khaimah, UAE</div>
-              <div className="flex items-center gap-3"><Mail className="h-4 w-4 text-brand-cyan" /> Info@vedantsgroups.com</div>
+              <div className="flex items-center gap-3">
+                <MapPin className="h-4 w-4 text-brand-cyan" /> RAK Economic Free Zone, Ras Al
+                Khaimah, UAE
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail className="h-4 w-4 text-brand-cyan" /> Info@vedantsgroups.com
+              </div>
             </div>
 
             <div className="mt-6 flex items-center gap-3">
@@ -85,7 +102,9 @@ export function Footer() {
           <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8">
             {COLS.map((col) => (
               <div key={col.title}>
-                <h4 className="text-sm font-semibold uppercase tracking-wider text-brand-cyan">{col.title}</h4>
+                <h4 className="text-sm font-semibold uppercase tracking-wider text-brand-cyan">
+                  {col.title}
+                </h4>
                 <ul className="mt-4 space-y-2.5">
                   {col.links.map((link) => (
                     <li key={link.label}>
@@ -107,9 +126,14 @@ export function Footer() {
         <div className="mt-16 rounded-3xl glass-dark p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
             <h3 className="text-xl font-semibold">Get enterprise insights, monthly.</h3>
-            <p className="mt-1 text-sm text-white/70">Signals on cloud, AI, automation and industry transformation.</p>
+            <p className="mt-1 text-sm text-white/70">
+              Signals on cloud, AI, automation and industry transformation.
+            </p>
           </div>
-          <form className="flex w-full max-w-md items-center gap-2" onSubmit={(e) => e.preventDefault()}>
+          <form
+            className="flex w-full max-w-md items-center gap-2"
+            onSubmit={(e) => e.preventDefault()}
+          >
             <input
               type="email"
               placeholder="you@company.com"
