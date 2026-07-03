@@ -180,6 +180,38 @@ function ServicesPage() {
         </div>
       </section>
 
+      {/* Feature band */}
+      <section className="px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="relative overflow-hidden rounded-[2rem] shadow-elegant">
+            <img
+              src={servicesFeature}
+              alt="Vedant Group global delivery network"
+              className="aspect-[21/9] h-full w-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/80 to-brand-navy/20" />
+            <div className="absolute inset-0 flex items-center">
+              <div className="max-w-xl px-8 md:px-14 text-white">
+                <h3 className="text-2xl md:text-4xl font-bold leading-tight">
+                  One partner. Global scale. Measurable outcomes.
+                </h3>
+                <p className="mt-3 text-white/80 leading-relaxed">
+                  From strategy to run, our teams deliver across 25+ countries with a single standard
+                  of engineering excellence.
+                </p>
+                <Link
+                  to="/contact"
+                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary shadow-elegant hover:scale-[1.03] transition-transform"
+                >
+                  Book a consultation <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Full catalog */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-soft">
         <div className="mx-auto max-w-7xl">

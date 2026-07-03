@@ -8,18 +8,19 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { CTA } from "@/components/site/home-sections";
 import { getServiceBySlug, getCategory, getServicesByCategory } from "@/data/services";
-import hero2 from "@/assets/hero-2.jpg";
-import hero3 from "@/assets/hero-3.jpg";
-import hero4 from "@/assets/hero-4.jpg";
-import hero5 from "@/assets/hero-5.jpg";
-import officeImg from "@/assets/about-office.jpg";
+import picCollaboration from "@/assets/pic-collaboration.jpg";
+import picDataCenter from "@/assets/pic-data-center.jpg";
+import picCircuit from "@/assets/pic-circuit.jpg";
+import picIndustry from "@/assets/pic-industry.jpg";
+import picTeamMeeting from "@/assets/pic-team-meeting.jpg";
+import picHandshake from "@/assets/pic-handshake.jpg";
 
 const CATEGORY_IMAGE: Record<string, string> = {
-  "consulting-transformation": hero3,
-  "cloud-data-security": hero2,
-  "ai-automation": hero2,
-  "industrial-enterprise": hero4,
-  "talent-solutions": hero5,
+  "consulting-transformation": picCollaboration,
+  "cloud-data-security": picDataCenter,
+  "ai-automation": picCircuit,
+  "industrial-enterprise": picIndustry,
+  "talent-solutions": picTeamMeeting,
 };
 
 export const Route = createFileRoute("/services/$slug")({
@@ -109,7 +110,7 @@ function ServiceDetailPage() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-brand-navy text-white pt-36 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0">
-          <img src={CATEGORY_IMAGE[service.categorySlug] ?? officeImg} alt="" className="h-full w-full object-cover" />
+          <img src={CATEGORY_IMAGE[service.categorySlug] ?? picHandshake} alt="" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-brand-navy/85" />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/70 to-brand-navy/40" />
         </div>
@@ -197,7 +198,7 @@ function ServiceDetailPage() {
 
               <div className="relative mt-8 overflow-hidden rounded-3xl shadow-elegant">
                 <img
-                  src={officeImg}
+                  src={picHandshake}
                   alt={`${service.name} delivery at Vedant Group`}
                   className="aspect-[16/9] h-full w-full object-cover"
                   loading="lazy"
