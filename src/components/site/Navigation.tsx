@@ -48,6 +48,13 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Header sits over a dark hero at the top of every page, and over a light
+  // surface once scrolled — so link colors flip to stay readable in both states.
+  const linkBase = scrolled
+    ? "text-foreground/70 hover:text-primary hover:bg-primary/5"
+    : "text-white/85 hover:text-white hover:bg-white/10";
+  const activeCls = scrolled ? "text-primary bg-primary/5" : "text-white bg-white/10";
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
@@ -72,8 +79,8 @@ export function Navigation() {
               >
                 <Link
                   to={item.to}
-                  className="flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
-                  activeProps={{ className: "text-primary" }}
+                  className={`flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-colors ${linkBase}`}
+                  activeProps={{ className: activeCls }}
                 >
                   {item.label}
                   <ChevronDown className="h-3.5 w-3.5" />
@@ -110,8 +117,8 @@ export function Navigation() {
               <Link
                 key={item.label}
                 to={item.to}
-                className="rounded-full px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
-                activeProps={{ className: "text-primary" }}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${linkBase}`}
+                activeProps={{ className: activeCls }}
               >
                 {item.label}
               </Link>
@@ -130,7 +137,7 @@ export function Navigation() {
         </div>
 
         <button
-          className="lg:hidden rounded-full p-2 text-foreground"
+          className={`lg:hidden rounded-full p-2 transition-colors ${scrolled ? "text-foreground" : "text-white"}`}
           onClick={() => setOpen((s) => !s)}
           aria-label="Toggle menu"
         >
