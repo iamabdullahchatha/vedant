@@ -9,7 +9,6 @@ import {
   Mail,
   MapPin,
   ArrowUpRight,
-  Phone,
 } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { Tilt3D } from "./Tilt3D";
@@ -203,13 +202,6 @@ export function Footer() {
               >
                 <Mail className="h-4 w-4 shrink-0 text-brand-cyan" />
                 <span>Info@vedantsgroups.com</span>
-              </a>
-              <a
-                href="tel:+9710000000000"
-                className="group flex items-center gap-3 transition-colors hover:text-white"
-              >
-                <Phone className="h-4 w-4 shrink-0 text-brand-cyan" />
-                <span>+971 (0) 000 000 0000</span>
               </a>
             </div>
 
