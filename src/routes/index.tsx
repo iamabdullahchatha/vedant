@@ -22,16 +22,19 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <SiteLayout>
-      <HeroSlider />
-      <TrustedBy />
-      <About />
-      <Services />
-      <WhyChoose />
-      <Industries />
-      <GlobalPresenceMap />
-      <Process />
-      <Testimonials />
-      <CTA />
+      {/* Clip horizontal overflow from entrance animations (x: ±40) and decorative orbs */}
+      <div className="overflow-x-hidden">
+        <HeroSlider />
+        <TrustedBy />
+        <About />
+        <Services />
+        <WhyChoose />
+        <Industries />
+        <GlobalPresenceMap />
+        <Process />
+        <Testimonials />
+        <CTA />
+      </div>
     </SiteLayout>
   );
 }

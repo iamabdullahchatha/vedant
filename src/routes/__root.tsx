@@ -91,7 +91,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", type: "image/png", sizes: "96x96", href: "/favicon-96x96.png" },
       { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
       { rel: "manifest", href: "/site.webmanifest" },
-      { rel: "canonical", href: `${SITE_URL}/` },
+      // NOTE: canonical is intentionally NOT set here. Per-route head() adds its
+      // own canonical; TanStack merges <link> tags by array position rather than
+      // by rel, so a root canonical would be appended (not replaced), producing
+      // duplicate <link rel="canonical"> tags on every child route.
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" },
