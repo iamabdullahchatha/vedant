@@ -15,6 +15,7 @@ import picWorkstation from "@/assets/pic-workstation.jpg";
 import picIndustry from "@/assets/pic-industry.jpg";
 import picTeamMeeting from "@/assets/pic-team-meeting.jpg";
 import picOffice from "@/assets/pic-office-interior.jpg";
+import picHandshake from "@/assets/pic-handshake.jpg";
 import picProductionLine from "@/assets/pic-production-line.jpg";
 
 /* ------------------------------- HERO SLIDER ------------------------------ */
@@ -236,7 +237,7 @@ export function About() {
           <div className="absolute -inset-6 rounded-3xl bg-gradient-brand opacity-20 blur-2xl" />
           <Tilt3D max={7} scale={1.015} className="relative rounded-3xl">
             <div className="relative overflow-hidden rounded-3xl shadow-elegant">
-              <img src={picOffice} alt="Vedant Group office" className="h-full w-full object-cover" loading="lazy" />
+              <img src={picHandshake} alt="Vedant Group global partnership" className="h-full w-full object-cover" loading="lazy" />
             </div>
           </Tilt3D>
           <div className="absolute -bottom-8 -right-6 hidden md:block glass-card rounded-2xl px-6 py-5 shadow-elegant animate-float">
