@@ -1,5 +1,5 @@
-﻿import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
+﻿import { useEffect, useState } from "react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   ArrowRight, Cloud, Shield, Cpu, Database, Cog, Users, Globe2, Sparkles,
   Zap, LineChart, Bot, Factory, HeartPulse, Landmark, ShoppingBag, Fuel,
@@ -184,59 +184,6 @@ export function HeroSlider() {
           </span>
         </div>
       </motion.div>
-    </section>
-  );
-}
-
-/* --------------------------------- COUNTER -------------------------------- */
-
-function Counter({ to, suffix = "", duration = 1800 }: { to: number; suffix?: string; duration?: number }) {
-  const [n, setN] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  useEffect(() => {
-    if (!inView) return;
-    const start = performance.now();
-    let raf = 0;
-    const step = (t: number) => {
-      const p = Math.min(1, (t - start) / duration);
-      const eased = 1 - Math.pow(1 - p, 3);
-      setN(Math.round(to * eased));
-      if (p < 1) raf = requestAnimationFrame(step);
-    };
-    raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
-  }, [inView, to, duration]);
-  return (
-    <span ref={ref} className="tabular-nums">
-      {n.toLocaleString()}{suffix}
-    </span>
-  );
-}
-
-export function Stats() {
-  const items = [
-    { value: 15, suffix: "+", label: "Years Experience" },
-    { value: 1700, suffix: "+", label: "Salesforce Certifications" },
-    { value: 3000, suffix: "+", label: "Projects Delivered" },
-    { value: 25, suffix: "+", label: "Countries · Global Presence" },
-  ];
-  return (
-    <section className="relative -mt-12 sm:-mt-24 z-20 px-4 sm:px-6 lg:px-8 perspective-1000">
-      <Tilt3D max={4} glare={false} className="mx-auto max-w-7xl rounded-3xl">
-        <div className="rounded-3xl glass-card p-6 sm:p-8 md:p-12 shadow-elegant">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-            {items.map((s) => (
-              <div key={s.label} className="text-center md:text-left">
-                <div className="text-3xl sm:text-5xl md:text-6xl font-bold text-gradient-brand font-[var(--font-display)]">
-                  <Counter to={s.value} suffix={s.suffix} />
-                </div>
-                <p className="mt-2 text-sm text-muted-foreground">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Tilt3D>
     </section>
   );
 }

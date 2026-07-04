@@ -265,9 +265,9 @@ function FAQPage() {
                       <AccordionItem
                         key={item.id}
                         value={`i-${item.id}`}
-                        className="rounded-2xl border border-border/60 bg-white px-6 shadow-card-soft"
+                        className="overflow-hidden rounded-2xl border border-border/60 bg-card px-6 shadow-card-soft transition-colors data-[state=open]:border-primary/40 data-[state=open]:shadow-elegant"
                       >
-                        <AccordionTrigger className="text-left text-base font-semibold hover:no-underline">
+                        <AccordionTrigger className="text-left text-base font-semibold hover:no-underline data-[state=open]:text-primary">
                           {item.q}
                         </AccordionTrigger>
                         <AccordionContent className="text-sm text-muted-foreground leading-relaxed">
@@ -306,18 +306,28 @@ function FAQPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mt-16 rounded-3xl bg-gradient-soft p-8 text-center sm:p-10"
+            className="relative mt-16 overflow-hidden rounded-3xl bg-brand-navy p-8 text-center text-white shadow-elegant sm:p-12"
           >
-            <h3 className="text-xl font-bold text-brand-navy">Still have questions?</h3>
-            <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
-              Our team can walk you through anything specific to your industry, stack or region.
-            </p>
-            <Link
-              to="/contact"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-navy px-6 py-3 text-sm font-semibold text-white shadow-elegant transition-transform hover:scale-105"
-            >
-              Contact our team
-            </Link>
+            <div className="pointer-events-none absolute inset-0 opacity-40">
+              <div className="absolute -top-24 left-1/4 h-64 w-64 rounded-full bg-brand-sky/40 blur-3xl" />
+              <div className="absolute -bottom-24 right-1/4 h-64 w-64 rounded-full bg-brand-cyan/30 blur-3xl" />
+            </div>
+            <div className="relative">
+              <div className="mx-auto grid h-12 w-12 place-items-center rounded-2xl glass-dark text-brand-cyan">
+                <MessageCircleQuestion className="h-6 w-6" />
+              </div>
+              <h3 className="mt-5 text-2xl font-bold">Still have questions?</h3>
+              <p className="mx-auto mt-2 max-w-md text-sm text-white/70">
+                Our team can walk you through anything specific to your industry, stack or region —
+                a senior partner responds within one business day.
+              </p>
+              <Link
+                to="/contact"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-primary shadow-elegant transition-transform hover:scale-105"
+              >
+                Contact our team
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

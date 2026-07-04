@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SERVICES } from "@/data/services";
+import { INDUSTRIES } from "@/data/industries";
 
 const BASE_URL = "";
 const paths = [
@@ -10,6 +11,7 @@ const paths = [
   "/faqs",
   "/contact",
   ...SERVICES.map((s) => `/services/${s.slug}`),
+  ...INDUSTRIES.map((i) => `/industries/${i.slug}`),
 ];
 
 export const Route = createFileRoute("/sitemap.xml")({

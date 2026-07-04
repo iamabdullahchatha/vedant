@@ -57,7 +57,7 @@ function LogoMark({ scrolled }: { scrolled: boolean }) {
           }`}
           style={{ transform: "translateZ(-12px)" }}
         />
-        <img src={logo} alt="Vedant Group" className="relative h-10 w-auto drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)]" />
+        <img src={logo} alt="Vedant Group" className="relative h-12 md:h-14 w-auto drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)]" />
       </motion.div>
     </div>
   );
@@ -130,7 +130,7 @@ export function Navigation() {
                       exit={{ opacity: 0, rotateX: -8, y: -10, scale: 0.98 }}
                       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                       style={{ transformOrigin: "top left", transformPerspective: 1200 }}
-                      className="w-[60rem] max-w-[92vw] rounded-3xl glass-card p-8 shadow-elegant"
+                      className="w-[60rem] max-w-[92vw] rounded-3xl border border-border/70 bg-background/98 backdrop-blur-xl p-8 shadow-elegant"
                     >
                       <div className="grid grid-cols-3 xl:grid-cols-5 gap-6">
                         {SERVICE_GROUPS.map((g) => (

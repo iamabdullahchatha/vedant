@@ -1,7 +1,7 @@
 ﻿import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import {
-  HeroSlider, Stats, TrustedBy, About, Services, WhyChoose, Industries,
+  HeroSlider, TrustedBy, About, Services, WhyChoose, Industries,
   GlobalPresenceMap, Process, Testimonials, CTA,
 } from "@/components/site/home-sections";
 
@@ -22,7 +22,6 @@ function Home() {
   return (
     <SiteLayout>
       <HeroSlider />
-      <Stats />
       <TrustedBy />
       <About />
       <Services />

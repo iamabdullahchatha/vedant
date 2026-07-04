@@ -39,11 +39,23 @@ const COLS = [
   {
     title: "Industries",
     links: [
-      { label: "Manufacturing", to: "/industries" },
-      { label: "BFSI", to: "/industries" },
-      { label: "Healthcare", to: "/industries" },
-      { label: "Energy & Utilities", to: "/industries" },
-      { label: "Telecommunications", to: "/industries" },
+      { label: "Manufacturing", to: "/industries/$slug", params: { slug: "manufacturing" } },
+      { label: "BFSI", to: "/industries/$slug", params: { slug: "bfsi" } },
+      {
+        label: "Healthcare",
+        to: "/industries/$slug",
+        params: { slug: "healthcare-life-sciences" },
+      },
+      {
+        label: "Energy & Utilities",
+        to: "/industries/$slug",
+        params: { slug: "energy-utilities" },
+      },
+      {
+        label: "Telecommunications",
+        to: "/industries/$slug",
+        params: { slug: "telecommunications" },
+      },
     ],
   },
   {
@@ -95,8 +107,8 @@ export function Footer() {
             className="lg:col-span-4"
           >
             <Tilt3D max={8} scale={1.03} className="w-fit rounded-2xl">
-              <div className="w-fit rounded-2xl bg-white px-4 py-3 shadow-elegant">
-                <img src={logo} alt="Vedant Group" className="h-10 w-auto" />
+              <div className="w-fit rounded-2xl bg-white px-5 py-4 shadow-elegant">
+                <img src={logo} alt="Vedant Group" className="h-14 w-auto" />
               </div>
             </Tilt3D>
             <p className="mt-6 text-sm leading-relaxed text-white/70 max-w-sm">

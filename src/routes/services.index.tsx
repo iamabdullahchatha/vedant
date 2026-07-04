@@ -16,6 +16,10 @@ import {
   Gauge,
   Repeat,
   Target,
+  Award,
+  Globe2,
+  Clock,
+  TrendingUp,
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
@@ -164,9 +168,12 @@ function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="group relative overflow-hidden rounded-2xl border border-border/60 bg-white p-6 shadow-card-soft hover:shadow-elegant transition-all hover:-translate-y-1"
+                className="group relative overflow-hidden rounded-2xl border border-border/60 bg-card p-6 shadow-card-soft hover:shadow-elegant hover:border-primary/30 transition-all hover:-translate-y-1"
               >
                 <div className="absolute -top-16 -right-16 h-40 w-40 rounded-full bg-gradient-brand opacity-0 group-hover:opacity-20 blur-2xl transition-opacity" />
+                <span className="absolute right-5 top-5 text-3xl font-bold text-border/70 transition-colors group-hover:text-primary/20 font-[var(--font-display)]">
+                  0{i + 1}
+                </span>
                 <div className="relative">
                   <div className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-brand text-white shadow-card-soft">
                     <p.icon className="h-5 w-5" />
@@ -180,8 +187,30 @@ function ServicesPage() {
         </div>
       </section>
 
-      {/* Feature band */}
+      {/* Proof band */}
       <section className="px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-border/60 bg-border/60 shadow-card-soft lg:grid-cols-4">
+            {[
+              { icon: Award, stat: "1,700+", label: "Salesforce certifications" },
+              { icon: Globe2, stat: "25+", label: "Countries delivered across" },
+              { icon: TrendingUp, stat: "3,000+", label: "Projects shipped" },
+              { icon: Clock, stat: "24/7", label: "Follow-the-sun support" },
+            ].map((s) => (
+              <div key={s.label} className="flex flex-col items-start gap-3 bg-card p-6 sm:p-8">
+                <div className="grid h-11 w-11 place-items-center rounded-xl bg-brand-ice text-primary">
+                  <s.icon className="h-5 w-5" />
+                </div>
+                <div className="text-3xl font-bold text-gradient-brand md:text-4xl">{s.stat}</div>
+                <p className="text-sm text-muted-foreground">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Feature band */}
+      <section className="pt-24 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="relative overflow-hidden rounded-[2rem] shadow-elegant">
             <img
