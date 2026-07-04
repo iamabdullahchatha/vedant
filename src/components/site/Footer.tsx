@@ -75,7 +75,10 @@ export function Footer() {
       {/* 3D depth backdrop: perspective floor grid + orbiting rings + glow orbs */}
       <div className="pointer-events-none absolute inset-0 opacity-40">
         <div className="absolute -top-40 -left-40 h-96 w-96 rounded-full bg-brand-sky/40 blur-3xl animate-float" />
-        <div className="absolute -bottom-40 -right-40 h-[500px] w-[500px] rounded-full bg-brand-cyan/30 blur-3xl animate-float" style={{ animationDelay: "2.5s" }} />
+        <div
+          className="absolute -bottom-40 -right-40 h-[500px] w-[500px] rounded-full bg-brand-cyan/30 blur-3xl animate-float"
+          style={{ animationDelay: "2.5s" }}
+        />
       </div>
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-64 opacity-25 [mask-image:linear-gradient(to_top,black,transparent)]"
@@ -89,8 +92,14 @@ export function Footer() {
       />
       <div className="pointer-events-none absolute right-[8%] top-10 hidden md:block perspective-1000 opacity-70">
         <div className="preserve-3d relative h-40 w-40">
-          <div className="absolute inset-0 rounded-full border border-brand-cyan/40 animate-spin-slow" style={{ transform: "rotateX(70deg)" }} />
-          <div className="absolute inset-4 rounded-full border border-brand-sky/30 animate-spin-slow-reverse" style={{ transform: "rotateX(70deg) rotateZ(30deg)" }} />
+          <div
+            className="absolute inset-0 rounded-full border border-brand-cyan/40 animate-spin-slow"
+            style={{ transform: "rotateX(70deg)" }}
+          />
+          <div
+            className="absolute inset-4 rounded-full border border-brand-sky/30 animate-spin-slow-reverse"
+            style={{ transform: "rotateX(70deg) rotateZ(30deg)" }}
+          />
           <div className="absolute inset-0 grid place-items-center">
             <div className="h-2.5 w-2.5 rounded-full bg-brand-cyan shadow-glow animate-orbit-bob" />
           </div>
@@ -175,25 +184,25 @@ export function Footer() {
 
         <Tilt3D max={3} glare={false} className="mt-16 rounded-3xl">
           <div className="rounded-3xl glass-dark p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-elegant">
-          <div>
-            <h3 className="text-xl font-semibold">Get enterprise insights, monthly.</h3>
-            <p className="mt-1 text-sm text-white/70">
-              Signals on cloud, AI, automation and industry transformation.
-            </p>
-          </div>
-          <form
-            className="flex w-full max-w-md flex-col sm:flex-row items-stretch sm:items-center gap-2"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <input
-              type="email"
-              placeholder="you@company.com"
-              className="w-full min-w-0 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-brand-sky"
-            />
-            <button className="shrink-0 rounded-full bg-gradient-brand animate-gradient px-5 py-3 text-sm font-semibold shadow-elegant transition-transform hover:scale-105">
-              Subscribe
-            </button>
-          </form>
+            <div>
+              <h3 className="text-xl font-semibold">Get enterprise insights, monthly.</h3>
+              <p className="mt-1 text-sm text-white/70">
+                Signals on cloud, AI, automation and industry transformation.
+              </p>
+            </div>
+            <form
+              className="flex w-full max-w-md flex-col sm:flex-row items-stretch sm:items-center gap-2"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <input
+                type="email"
+                placeholder="you@company.com"
+                className="w-full min-w-0 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-brand-sky"
+              />
+              <button className="shrink-0 rounded-full bg-gradient-brand animate-gradient px-5 py-3 text-sm font-semibold shadow-elegant transition-transform hover:scale-105">
+                Subscribe
+              </button>
+            </form>
           </div>
         </Tilt3D>
 

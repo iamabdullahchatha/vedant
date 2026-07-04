@@ -123,9 +123,7 @@ function IndustriesPage() {
                       </div>
 
                       <div className="flex flex-1 flex-col p-8">
-                        <p className="text-sm font-medium text-brand-royal">
-                          {industry.tagline}
-                        </p>
+                        <p className="text-sm font-medium text-brand-royal">{industry.tagline}</p>
                         <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
                           {industry.challenge}
                         </p>

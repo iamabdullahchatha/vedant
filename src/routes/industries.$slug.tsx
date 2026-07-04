@@ -1,8 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
-  ArrowRight, ArrowLeft, CheckCircle2, ChevronRight,
-  TrendingUp, MessageSquare, Globe2, ShieldCheck, Layers,
+  ArrowRight,
+  ArrowLeft,
+  CheckCircle2,
+  ChevronRight,
+  TrendingUp,
+  MessageSquare,
+  Globe2,
+  ShieldCheck,
+  Layers,
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Tilt3D } from "@/components/site/Tilt3D";
@@ -27,22 +34,24 @@ export const Route = createFileRoute("/industries/$slug")({
       ],
       links: [{ rel: "canonical", href: `/industries/${params.slug}` }],
       scripts: industry
-        ? [{
-            type: "application/ld+json",
-            children: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Service",
-              name: `${industry.name} solutions`,
-              serviceType: industry.name,
-              description: industry.tagline,
-              areaServed: "Worldwide",
-              provider: {
-                "@type": "Organization",
-                name: "Vedant Group",
-                url: "/",
-              },
-            }),
-          }]
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Service",
+                name: `${industry.name} solutions`,
+                serviceType: industry.name,
+                description: industry.tagline,
+                areaServed: "Worldwide",
+                provider: {
+                  "@type": "Organization",
+                  name: "Vedant Group",
+                  url: "/",
+                },
+              }),
+            },
+          ]
         : [],
     };
   },
@@ -64,11 +73,16 @@ function IndustryDetailPage() {
         <section className="relative overflow-hidden bg-brand-navy text-white pt-40 pb-24 px-4 sm:px-6 lg:px-8">
           <div className="pointer-events-none absolute inset-0 opacity-40">
             <div className="absolute -top-20 left-1/4 h-96 w-96 rounded-full bg-brand-sky/50 blur-3xl animate-float" />
-            <div className="absolute -bottom-40 right-0 h-[500px] w-[500px] rounded-full bg-brand-cyan/40 blur-3xl animate-float" style={{ animationDelay: "2s" }} />
+            <div
+              className="absolute -bottom-40 right-0 h-[500px] w-[500px] rounded-full bg-brand-cyan/40 blur-3xl animate-float"
+              style={{ animationDelay: "2s" }}
+            />
           </div>
           <div className="relative mx-auto max-w-3xl text-center">
             <h1 className="text-4xl font-bold">Industry not found</h1>
-            <p className="mt-4 text-white/70">The industry you're looking for doesn't exist or has moved.</p>
+            <p className="mt-4 text-white/70">
+              The industry you're looking for doesn't exist or has moved.
+            </p>
             <Link
               to="/industries"
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-navy shadow-elegant"
@@ -92,22 +106,42 @@ function IndustryDetailPage() {
       <section className="relative overflow-hidden bg-brand-navy text-white pt-36 pb-24 px-4 sm:px-6 lg:px-8">
         <div className="pointer-events-none absolute inset-0 opacity-40 perspective-1000">
           <div className="absolute -top-20 left-1/4 h-96 w-96 rounded-full bg-brand-sky/50 blur-3xl animate-float" />
-          <div className="absolute -bottom-40 right-0 h-[500px] w-[500px] rounded-full bg-brand-cyan/40 blur-3xl animate-float" style={{ animationDelay: "2s" }} />
+          <div
+            className="absolute -bottom-40 right-0 h-[500px] w-[500px] rounded-full bg-brand-cyan/40 blur-3xl animate-float"
+            style={{ animationDelay: "2s" }}
+          />
           <div className="absolute right-[8%] top-16 hidden lg:block preserve-3d opacity-70">
-            <div className="h-32 w-32 rounded-full border border-white/25 animate-spin-slow" style={{ transform: "rotateX(65deg)" }} />
-            <div className="absolute inset-4 rounded-full border border-brand-cyan/30 animate-spin-slow-reverse" style={{ transform: "rotateX(65deg)" }} />
+            <div
+              className="h-32 w-32 rounded-full border border-white/25 animate-spin-slow"
+              style={{ transform: "rotateX(65deg)" }}
+            />
+            <div
+              className="absolute inset-4 rounded-full border border-brand-cyan/30 animate-spin-slow-reverse"
+              style={{ transform: "rotateX(65deg)" }}
+            />
           </div>
         </div>
-        <div className="absolute inset-0 opacity-20" style={{
-          backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.35) 1px, transparent 0)",
-          backgroundSize: "24px 24px",
-        }} />
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.35) 1px, transparent 0)",
+            backgroundSize: "24px 24px",
+          }}
+        />
 
         <div className="relative mx-auto max-w-7xl">
-          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1.5 text-sm text-white/60">
-            <Link to="/" className="hover:text-white transition-colors">Home</Link>
+          <nav
+            aria-label="Breadcrumb"
+            className="flex flex-wrap items-center gap-1.5 text-sm text-white/60"
+          >
+            <Link to="/" className="hover:text-white transition-colors">
+              Home
+            </Link>
             <ChevronRight className="h-3.5 w-3.5" />
-            <Link to="/industries" className="hover:text-white transition-colors">Industries</Link>
+            <Link to="/industries" className="hover:text-white transition-colors">
+              Industries
+            </Link>
             <ChevronRight className="h-3.5 w-3.5" />
             <span className="text-white/80">{industry.name}</span>
           </nav>
@@ -136,7 +170,8 @@ function IndustryDetailPage() {
                 to="/contact"
                 className="group inline-flex items-center gap-2 rounded-full bg-gradient-brand animate-gradient px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-elegant transition-transform hover:scale-[1.03]"
               >
-                Talk to a specialist <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                Talk to a specialist{" "}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 to="/industries"
@@ -149,7 +184,9 @@ function IndustryDetailPage() {
             <div className="mt-12 inline-flex items-center gap-5 rounded-2xl glass-dark px-6 py-5">
               <div className="text-3xl font-bold text-white">{industry.stat.value}</div>
               <div className="h-10 w-px bg-white/20" />
-              <div className="max-w-xs text-sm text-white/70 leading-snug">{industry.stat.label}</div>
+              <div className="max-w-xs text-sm text-white/70 leading-snug">
+                {industry.stat.label}
+              </div>
             </div>
           </motion.div>
         </div>
@@ -176,9 +213,10 @@ function IndustryDetailPage() {
               </h2>
               <p className="mt-5 text-muted-foreground leading-relaxed">{industry.challenge}</p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                Delivered by Vedant Group's global teams across 25+ countries, every {industry.name.toLowerCase()}{" "}
-                engagement combines domain-deep expertise, certified specialists and a delivery model
-                built for security, quality and measurable business outcomes.
+                Delivered by Vedant Group's global teams across 25+ countries, every{" "}
+                {industry.name.toLowerCase()} engagement combines domain-deep expertise, certified
+                specialists and a delivery model built for security, quality and measurable business
+                outcomes.
               </p>
 
               <div className="mt-9 perspective-1000">
@@ -246,7 +284,9 @@ function IndustryDetailPage() {
               transition={{ duration: 0.5 }}
             >
               <h2 className="text-3xl md:text-4xl font-bold leading-tight">How we approach it</h2>
-              <p className="mt-3 text-muted-foreground">A proven, low-risk path from ambition to outcome.</p>
+              <p className="mt-3 text-muted-foreground">
+                A proven, low-risk path from ambition to outcome.
+              </p>
               <div className="mt-8 space-y-4">
                 {industry.approach.map((step, i) => (
                   <motion.div
@@ -274,7 +314,9 @@ function IndustryDetailPage() {
               transition={{ duration: 0.5 }}
             >
               <h2 className="text-3xl md:text-4xl font-bold leading-tight">Outcomes that matter</h2>
-              <p className="mt-3 text-muted-foreground">Results our {industry.name.toLowerCase()} clients see in production.</p>
+              <p className="mt-3 text-muted-foreground">
+                Results our {industry.name.toLowerCase()} clients see in production.
+              </p>
               <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {industry.outcomes.map((o, i) => (
                   <motion.div
@@ -319,7 +361,9 @@ function IndustryDetailPage() {
             </div>
 
             <div className="rounded-3xl border border-border/60 bg-white p-7 shadow-card-soft">
-              <p className="text-xs font-semibold uppercase tracking-widest text-primary">At a glance</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                At a glance
+              </p>
               <div className="mt-4 space-y-4">
                 <div className="flex items-start gap-3">
                   <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-brand-ice text-primary">
@@ -346,7 +390,9 @@ function IndustryDetailPage() {
 
             {industry.relatedServiceSlugs.length > 0 && (
               <div className="rounded-3xl border border-border/60 bg-white p-7 shadow-card-soft">
-                <p className="text-xs font-semibold uppercase tracking-widest text-primary">Related services</p>
+                <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+                  Related services
+                </p>
                 <ul className="mt-4 space-y-1">
                   {industry.relatedServiceSlugs.map((s) => {
                     const service = getServiceBySlug(s);
@@ -381,7 +427,9 @@ function IndustryDetailPage() {
           >
             <ArrowLeft className="h-5 w-5 shrink-0 text-primary transition-transform group-hover:-translate-x-1" />
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Previous</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                Previous
+              </p>
               <p className="mt-1 font-semibold">{prev.name}</p>
             </div>
           </Link>
@@ -391,7 +439,9 @@ function IndustryDetailPage() {
             className="group flex items-center justify-end gap-4 rounded-2xl border border-border/60 bg-white p-6 text-right hover:shadow-elegant hover:-translate-y-0.5 transition-all"
           >
             <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Next</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                Next
+              </p>
               <p className="mt-1 font-semibold">{next.name}</p>
             </div>
             <ArrowRight className="h-5 w-5 shrink-0 text-primary transition-transform group-hover:translate-x-1" />
