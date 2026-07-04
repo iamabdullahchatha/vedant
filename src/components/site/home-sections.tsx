@@ -93,7 +93,7 @@ export function HeroSlider() {
     <section
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
-      className="relative h-[100svh] min-h-[720px] w-full overflow-hidden bg-brand-navy"
+      className="relative h-[100svh] min-h-[620px] sm:min-h-[720px] w-full overflow-hidden bg-brand-navy"
     >
       <AnimatePresence mode="wait">
         <motion.div
@@ -120,7 +120,7 @@ export function HeroSlider() {
         </motion.div>
       </div>
 
-      <motion.div style={{ x: contentX, y: contentY }} className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end pb-24 pt-32 px-4 sm:px-6 lg:px-8">
+      <motion.div style={{ x: contentX, y: contentY }} className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end overflow-y-auto pb-16 pt-24 sm:pb-24 sm:pt-32 px-4 sm:px-6 lg:px-8">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
@@ -133,7 +133,7 @@ export function HeroSlider() {
             <div className="inline-flex items-center gap-2 rounded-full glass-dark px-4 py-2 text-xs font-medium uppercase tracking-widest text-brand-cyan">
               <Sparkles className="h-3.5 w-3.5" /> {slide.eyebrow}
             </div>
-            <h1 className="mt-6 whitespace-pre-line text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.02] text-white">
+            <h1 className="mt-6 whitespace-pre-line text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] sm:leading-[1.02] text-white">
               {slide.title.split("\n").map((line, i) => (
                 <span key={i} className="block">
                   {i === 1 ? <span className="text-gradient-brand bg-clip-text">{line}</span> : line}
@@ -222,13 +222,13 @@ export function Stats() {
     { value: 25, suffix: "+", label: "Countries · Global Presence" },
   ];
   return (
-    <section className="relative -mt-24 z-20 px-4 sm:px-6 lg:px-8 perspective-1000">
+    <section className="relative -mt-12 sm:-mt-24 z-20 px-4 sm:px-6 lg:px-8 perspective-1000">
       <Tilt3D max={4} glare={false} className="mx-auto max-w-7xl rounded-3xl">
-        <div className="rounded-3xl glass-card p-8 md:p-12 shadow-elegant">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="rounded-3xl glass-card p-6 sm:p-8 md:p-12 shadow-elegant">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             {items.map((s) => (
               <div key={s.label} className="text-center md:text-left">
-                <div className="text-5xl md:text-6xl font-bold text-gradient-brand font-[var(--font-display)]">
+                <div className="text-3xl sm:text-5xl md:text-6xl font-bold text-gradient-brand font-[var(--font-display)]">
                   <Counter to={s.value} suffix={s.suffix} />
                 </div>
                 <p className="mt-2 text-sm text-muted-foreground">{s.label}</p>
@@ -639,7 +639,7 @@ export function Process() {
 
         <div className="mt-16 relative">
           <div className="absolute top-6 left-0 right-0 hidden lg:block h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6">
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-10 sm:gap-x-6 lg:flex-nowrap lg:justify-between">
             {STEPS.map((s, i) => (
               <motion.div
                 key={s.title}
@@ -647,7 +647,7 @@ export function Process() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="relative"
+                className="relative w-[calc(50%-1rem)] sm:w-[calc(33.333%-1rem)] lg:w-auto lg:flex-1"
               >
                 <div className="grid h-12 w-12 place-items-center rounded-full bg-gradient-brand text-white shadow-elegant mx-auto lg:mx-0 ring-4 ring-background">
                   <s.icon className="h-5 w-5" />

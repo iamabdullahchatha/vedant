@@ -48,7 +48,7 @@ export function Tilt3D({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       style={{ rotateX, rotateY, scale: s, transformPerspective: 900 }}
-      className={`preserve-3d ${className}`}
+      className={`group preserve-3d ${className}`}
     >
       <div className="relative">
         {children}

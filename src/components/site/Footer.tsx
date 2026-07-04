@@ -170,13 +170,13 @@ export function Footer() {
             </p>
           </div>
           <form
-            className="flex w-full max-w-md items-center gap-2"
+            className="flex w-full max-w-md flex-col sm:flex-row items-stretch sm:items-center gap-2"
             onSubmit={(e) => e.preventDefault()}
           >
             <input
               type="email"
               placeholder="you@company.com"
-              className="w-full rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-brand-sky"
+              className="w-full min-w-0 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-brand-sky"
             />
             <button className="shrink-0 rounded-full bg-gradient-brand animate-gradient px-5 py-3 text-sm font-semibold shadow-elegant transition-transform hover:scale-105">
               Subscribe

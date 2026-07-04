@@ -123,16 +123,16 @@ export function Navigation() {
                 </Link>
                 <AnimatePresence>
                   {megaOpen && (
-                  <div className="absolute left-1/2 top-full -translate-x-1/2 pt-4 perspective-1600">
+                  <div className="absolute left-0 top-full w-max max-w-[min(60rem,92vw)] pt-4 perspective-1600">
                     <motion.div
                       initial={{ opacity: 0, rotateX: -12, y: -16, scale: 0.96 }}
                       animate={{ opacity: 1, rotateX: 0, y: 0, scale: 1 }}
                       exit={{ opacity: 0, rotateX: -8, y: -10, scale: 0.98 }}
                       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                      style={{ transformOrigin: "top center", transformPerspective: 1200 }}
-                      className="w-240 max-w-[92vw] rounded-3xl glass-card p-8 shadow-elegant"
+                      style={{ transformOrigin: "top left", transformPerspective: 1200 }}
+                      className="w-[60rem] max-w-[92vw] rounded-3xl glass-card p-8 shadow-elegant"
                     >
-                      <div className="grid grid-cols-5 gap-6">
+                      <div className="grid grid-cols-3 xl:grid-cols-5 gap-6">
                         {SERVICE_GROUPS.map((g) => (
                           <div key={g.title}>
                             <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-primary">
