@@ -473,21 +473,75 @@ export function Industries() {
 
 /* --------------------------- GLOBAL PRESENCE ----------------------------- */
 
-const REGIONS = [
-  { code: "USA", pos: [22, 42] }, { code: "CAN", pos: [24, 32] },
-  { code: "UK", pos: [46, 34] }, { code: "IRL", pos: [44, 34] },
-  { code: "DEU", pos: [50, 36] }, { code: "FRA", pos: [48, 38] },
-  { code: "CHE", pos: [50, 40] }, { code: "POL", pos: [53, 36] },
-  { code: "SWE", pos: [51, 28] }, { code: "UAE", pos: [60, 50] },
-  { code: "KSA", pos: [58, 52] }, { code: "OMN", pos: [62, 52] },
-  { code: "QAT", pos: [60, 50] }, { code: "KWT", pos: [58, 48] },
-  { code: "IND", pos: [68, 52] }, { code: "SGP", pos: [76, 62] },
-  { code: "MYS", pos: [76, 60] }, { code: "JPN", pos: [85, 44] },
-  { code: "AUS", pos: [82, 74] }, { code: "CHN", pos: [80, 46] },
-  { code: "KOR", pos: [83, 44] },
+/**
+ * Stylised world silhouette in a 200×100 equirectangular viewBox
+ * (x = (lng+180)/1.8, y = (90-lat)/1.8). Continents are simplified but
+ * geographically placed so delivery-center pins land on real land.
+ */
+const WORLD_PATH = [
+  // North America
+  "M 12 24 L 34 20 L 52 24 L 58 30 L 56 38 L 48 44 L 44 52 L 38 54 L 34 48 L 30 42 L 24 40 L 20 34 L 14 30 Z",
+  // Central America
+  "M 44 52 L 50 56 L 54 62 L 52 66 L 48 62 L 44 56 Z",
+  // South America
+  "M 54 64 L 64 62 L 70 70 L 68 82 L 62 92 L 58 90 L 56 80 L 52 72 L 54 66 Z",
+  // Greenland
+  "M 62 12 L 74 10 L 78 16 L 72 22 L 64 20 Z",
+  // Africa
+  "M 92 50 L 104 48 L 112 52 L 114 62 L 110 74 L 104 84 L 98 82 L 96 72 L 92 62 L 90 54 Z",
+  // Europe
+  "M 90 30 L 104 28 L 112 30 L 110 38 L 102 42 L 94 42 L 88 38 L 88 32 Z",
+  // Middle East + Arabia
+  "M 112 44 L 122 44 L 126 52 L 122 58 L 116 56 L 112 50 Z",
+  // Asia (mainland)
+  "M 112 24 L 140 20 L 160 24 L 172 30 L 174 40 L 166 46 L 156 48 L 148 44 L 138 46 L 128 44 L 122 40 L 114 36 L 110 30 Z",
+  // India subcontinent
+  "M 126 46 L 136 46 L 138 54 L 134 62 L 130 58 L 126 50 Z",
+  // SE Asia / Indonesia
+  "M 150 54 L 166 56 L 172 62 L 166 66 L 156 64 L 150 58 Z",
+  // Japan
+  "M 176 34 L 182 32 L 184 38 L 180 42 L 176 38 Z",
+  // Australia
+  "M 158 70 L 176 68 L 184 74 L 182 84 L 172 88 L 162 84 L 156 76 Z",
+].join(" ");
+
+/**
+ * Delivery centers with real geographic coordinates [lng, lat].
+ * `hub: true` marks primary regional hubs (larger pin).
+ */
+const CENTERS: { code: string; name: string; lng: number; lat: number; hub?: boolean }[] = [
+  { code: "USA", name: "United States", lng: -95.7, lat: 39.0, hub: true },
+  { code: "CAN", name: "Canada", lng: -79.4, lat: 43.7 },
+  { code: "UK", name: "United Kingdom", lng: -1.5, lat: 52.5, hub: true },
+  { code: "IRL", name: "Ireland", lng: -6.3, lat: 53.3 },
+  { code: "DEU", name: "Germany", lng: 10.5, lat: 51.2 },
+  { code: "FRA", name: "France", lng: 2.3, lat: 46.6 },
+  { code: "UAE", name: "United Arab Emirates", lng: 54.4, lat: 24.5, hub: true },
+  { code: "KSA", name: "Saudi Arabia", lng: 45.1, lat: 23.9 },
+  { code: "QAT", name: "Qatar", lng: 51.2, lat: 25.3 },
+  { code: "IND", name: "India", lng: 78.9, lat: 20.6, hub: true },
+  { code: "SGP", name: "Singapore", lng: 103.8, lat: 1.35 },
+  { code: "JPN", name: "Japan", lng: 138.3, lat: 36.2 },
+  { code: "KOR", name: "South Korea", lng: 127.8, lat: 36.5 },
+  { code: "CHN", name: "China", lng: 104.2, lat: 35.9 },
+  { code: "AUS", name: "Australia", lng: 133.8, lat: -25.3, hub: true },
+];
+
+/** Equirectangular projection onto the 200×100 viewBox used by the world silhouette. */
+const proj = (lng: number, lat: number) => ({
+  x: (lng + 180) * (200 / 360),
+  y: (90 - lat) * (100 / 180),
+});
+
+/** Great-circle-ish route connections between hubs (follow-the-sun flow). */
+const ROUTES: [string, string][] = [
+  ["USA", "UK"], ["UK", "UAE"], ["UAE", "IND"], ["IND", "SGP"],
+  ["SGP", "AUS"], ["IND", "JPN"], ["UAE", "KSA"], ["UK", "DEU"],
 ];
 
 export function GlobalPresenceMap() {
+  const byCode = Object.fromEntries(CENTERS.map((c) => [c.code, c]));
+
   return (
     <section className="py-28 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
@@ -509,50 +563,91 @@ export function GlobalPresenceMap() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="relative aspect-[16/10] rounded-3xl overflow-hidden bg-brand-navy shadow-elegant">
-              <div className="absolute inset-0 opacity-40" style={{
-                backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.35) 1px, transparent 0)",
-                backgroundSize: "18px 18px",
-              }} />
-              <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" preserveAspectRatio="none">
+            <div className="relative aspect-[2/1] rounded-3xl overflow-hidden bg-brand-navy shadow-elegant ring-1 ring-white/10">
+              {/* soft brand glow */}
+              <div className="pointer-events-none absolute -top-24 left-1/3 h-72 w-72 rounded-full bg-brand-sky/20 blur-3xl" />
+
+              <svg viewBox="0 0 200 100" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice">
                 <defs>
-                  <radialGradient id="pulse" cx="50%" cy="50%">
-                    <stop offset="0%" stopColor="#67e8f9" stopOpacity="1" />
+                  <radialGradient id="gp-pulse" cx="50%" cy="50%">
+                    <stop offset="0%" stopColor="#67e8f9" stopOpacity="0.9" />
                     <stop offset="100%" stopColor="#67e8f9" stopOpacity="0" />
                   </radialGradient>
+                  <linearGradient id="gp-route" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.1" />
+                    <stop offset="50%" stopColor="#67e8f9" stopOpacity="0.85" />
+                    <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.1" />
+                  </linearGradient>
                 </defs>
-                {REGIONS.map((r, i) => (
-                  <g key={r.code + i}>
-                    <circle cx={r.pos[0]} cy={r.pos[1]} r="2.5" fill="url(#pulse)">
-                      <animate attributeName="r" values="2;5;2" dur="2.6s" begin={`${i * 0.15}s`} repeatCount="indefinite" />
-                      <animate attributeName="opacity" values="1;0.2;1" dur="2.6s" begin={`${i * 0.15}s`} repeatCount="indefinite" />
-                    </circle>
-                    <circle cx={r.pos[0]} cy={r.pos[1]} r="0.9" fill="#67e8f9" />
-                  </g>
-                ))}
-                {/* connecting arcs */}
-                {[
-                  ["22,42", "46,34"], ["46,34", "68,52"], ["68,52", "76,62"], ["76,62", "82,74"],
-                  ["68,52", "60,50"], ["46,34", "50,36"], ["68,52", "85,44"],
-                ].map(([a, b], i) => {
-                  const [ax, ay] = a.split(",").map(Number);
-                  const [bx, by] = b.split(",").map(Number);
-                  const mx = (ax + bx) / 2;
-                  const my = Math.min(ay, by) - 8;
+
+                {/* subtle graticule (lat/long grid) */}
+                <g stroke="#ffffff" strokeOpacity="0.05" strokeWidth="0.15">
+                  {[20, 40, 60, 80, 100, 120, 140, 160, 180].map((x) => (
+                    <line key={`v${x}`} x1={x} y1="0" x2={x} y2="100" />
+                  ))}
+                  {[20, 40, 60, 80].map((y) => (
+                    <line key={`h${y}`} x1="0" y1={y} x2="200" y2={y} />
+                  ))}
+                </g>
+
+                {/* real continent silhouettes */}
+                <path
+                  d={WORLD_PATH}
+                  fill="#1e3a63"
+                  fillOpacity="0.9"
+                  stroke="#3b6ea5"
+                  strokeOpacity="0.35"
+                  strokeWidth="0.2"
+                />
+
+                {/* connecting routes between hubs */}
+                {ROUTES.map(([a, b], i) => {
+                  const A = byCode[a], B = byCode[b];
+                  if (!A || !B) return null;
+                  const pa = proj(A.lng, A.lat), pb = proj(B.lng, B.lat);
+                  const mx = (pa.x + pb.x) / 2;
+                  const my = Math.min(pa.y, pb.y) - Math.abs(pb.x - pa.x) * 0.18 - 3;
                   return (
                     <path
                       key={i}
-                      d={`M ${ax} ${ay} Q ${mx} ${my} ${bx} ${by}`}
+                      d={`M ${pa.x} ${pa.y} Q ${mx} ${my} ${pb.x} ${pb.y}`}
                       fill="none"
-                      stroke="#67e8f9"
-                      strokeWidth="0.25"
-                      strokeDasharray="1 1.2"
-                      opacity="0.7"
+                      stroke="url(#gp-route)"
+                      strokeWidth="0.4"
+                      strokeLinecap="round"
                     />
                   );
                 })}
+
+                {/* delivery-center markers */}
+                {CENTERS.map((c, i) => {
+                  const p = proj(c.lng, c.lat);
+                  const rHalo = c.hub ? 4 : 2.8;
+                  const rDot = c.hub ? 1.1 : 0.8;
+                  return (
+                    <g key={c.code}>
+                      <circle cx={p.x} cy={p.y} r={rHalo} fill="url(#gp-pulse)">
+                        <animate attributeName="r" values={`${rHalo * 0.7};${rHalo};${rHalo * 0.7}`} dur="3s" begin={`${i * 0.18}s`} repeatCount="indefinite" />
+                        <animate attributeName="opacity" values="0.9;0.35;0.9" dur="3s" begin={`${i * 0.18}s`} repeatCount="indefinite" />
+                      </circle>
+                      <circle cx={p.x} cy={p.y} r={rDot} fill={c.hub ? "#a5f3fc" : "#67e8f9"} stroke="#0b1e3a" strokeWidth="0.15" />
+                    </g>
+                  );
+                })}
               </svg>
-              <div className="absolute bottom-4 right-4 rounded-full glass-dark px-3 py-1.5 text-xs text-white/80">Live delivery centers</div>
+
+              {/* legend + badge */}
+              <div className="absolute bottom-4 left-4 flex items-center gap-4 rounded-full glass-dark px-3 py-1.5 text-[11px] text-white/80">
+                <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-[#a5f3fc]" /> Regional hub</span>
+                <span className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-[#67e8f9]" /> Delivery center</span>
+              </div>
+              <div className="absolute bottom-4 right-4 flex items-center gap-1.5 rounded-full glass-dark px-3 py-1.5 text-xs text-white/80">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                </span>
+                Live delivery centers
+              </div>
             </div>
           </div>
         </div>

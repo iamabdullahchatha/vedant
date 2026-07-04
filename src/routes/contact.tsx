@@ -24,6 +24,7 @@ export const Route = createFileRoute("/contact")({
 
 const ADDRESS = "Vedant Consultancy Services Fz LLC, RAK Economic Free Zone, Ras Al Khaimah, UAE";
 const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("RAK Economic Free Zone, Ras Al Khaimah, UAE")}`;
+const MAPS_EMBED_URL = `https://maps.google.com/maps?q=${encodeURIComponent("RAK Economic Free Zone, Ras Al Khaimah, UAE")}&z=13&output=embed`;
 
 const INFO = [
   {
@@ -249,14 +250,16 @@ function ContactPage() {
                 </a>
               </div>
 
-              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden glass-dark grid place-items-center">
-                <div className="relative">
-                  <span className="absolute -inset-8 rounded-full bg-brand-cyan/25 blur-2xl animate-float" />
-                  <span className="relative grid h-16 w-16 place-items-center rounded-full bg-gradient-brand text-white shadow-elegant">
-                    <MapPin className="h-7 w-7" />
-                  </span>
-                </div>
-                <div className="absolute bottom-4 right-4 rounded-full glass-dark px-3 py-1.5 text-xs text-white/80">
+              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden glass-dark">
+                <iframe
+                  title="Vedant Group headquarters — RAK Economic Free Zone, Ras Al Khaimah, UAE"
+                  src={MAPS_EMBED_URL}
+                  className="absolute inset-0 h-full w-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+                <div className="pointer-events-none absolute bottom-4 right-4 rounded-full glass-dark px-3 py-1.5 text-xs text-white/80">
                   RAK Economic Free Zone
                 </div>
               </div>

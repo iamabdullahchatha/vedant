@@ -1,6 +1,16 @@
-﻿import { Link } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Linkedin, Twitter, Facebook, Instagram, Youtube, Mail, MapPin } from "lucide-react";
+import {
+  Linkedin,
+  Twitter,
+  Facebook,
+  Instagram,
+  Youtube,
+  Mail,
+  MapPin,
+  ArrowUpRight,
+  Phone,
+} from "lucide-react";
 import logo from "@/assets/logo.png";
 import { Tilt3D } from "./Tilt3D";
 
@@ -69,10 +79,23 @@ const COLS = [
   },
 ] as const;
 
+const SOCIALS = [
+  { Icon: Linkedin, label: "LinkedIn" },
+  { Icon: Twitter, label: "Twitter" },
+  { Icon: Facebook, label: "Facebook" },
+  { Icon: Instagram, label: "Instagram" },
+  { Icon: Youtube, label: "YouTube" },
+] as const;
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-brand-navy text-white">
-      {/* 3D depth backdrop: perspective floor grid + orbiting rings + glow orbs */}
+      {/* Hairline gradient accent along the top edge */}
+      <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-brand-cyan/60 to-transparent" />
+
+      {/* Depth backdrop: glow orbs + perspective grid + orbiting rings */}
       <div className="pointer-events-none absolute inset-0 opacity-40">
         <div className="absolute -top-40 -left-40 h-96 w-96 rounded-full bg-brand-sky/40 blur-3xl animate-float" />
         <div
@@ -90,34 +113,72 @@ export function Footer() {
           transformOrigin: "bottom",
         }}
       />
-      <div className="pointer-events-none absolute right-[8%] top-10 hidden md:block perspective-1000 opacity-70">
-        <div className="preserve-3d relative h-40 w-40">
-          <div
-            className="absolute inset-0 rounded-full border border-brand-cyan/40 animate-spin-slow"
-            style={{ transform: "rotateX(70deg)" }}
-          />
-          <div
-            className="absolute inset-4 rounded-full border border-brand-sky/30 animate-spin-slow-reverse"
-            style={{ transform: "rotateX(70deg) rotateZ(30deg)" }}
-          />
-          <div className="absolute inset-0 grid place-items-center">
-            <div className="h-2.5 w-2.5 rounded-full bg-brand-cyan shadow-glow animate-orbit-bob" />
-          </div>
-        </div>
-      </div>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* ── Newsletter CTA band ─────────────────────────────── */}
+        <Tilt3D max={3} glare={false} className="mt-20 rounded-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, ease: EASE }}
+            className="relative overflow-hidden rounded-3xl glass-dark p-8 md:p-12 shadow-elegant"
+          >
+            <div
+              className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-cyan/20 blur-3xl"
+              aria-hidden
+            />
+            <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+              <div className="max-w-lg">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium tracking-wide text-brand-cyan">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-cyan opacity-75" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-cyan" />
+                  </span>
+                  Enterprise Insights
+                </span>
+                <h3 className="mt-4 text-2xl md:text-3xl font-semibold tracking-tight">
+                  Signals that move the needle, monthly.
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/70">
+                  Curated intelligence on cloud, AI, automation and industry transformation —
+                  written for decision-makers. No noise, unsubscribe anytime.
+                </p>
+              </div>
+              <form
+                className="w-full max-w-md"
+                onSubmit={(e) => e.preventDefault()}
+              >
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                  <input
+                    type="email"
+                    placeholder="you@company.com"
+                    className="w-full min-w-0 rounded-full border border-white/15 bg-white/5 px-5 py-3.5 text-sm text-white placeholder:text-white/40 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-sky focus:border-transparent"
+                  />
+                  <button className="group shrink-0 inline-flex items-center justify-center gap-1.5 rounded-full bg-gradient-brand animate-gradient px-6 py-3.5 text-sm font-semibold shadow-elegant transition-transform hover:scale-105">
+                    Subscribe
+                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </button>
+                </div>
+                <p className="mt-3 pl-1 text-xs text-white/40">
+                  Trusted by leaders across 25+ countries.
+                </p>
+              </form>
+            </div>
+          </motion.div>
+        </Tilt3D>
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
+        {/* ── Main columns ────────────────────────────────────── */}
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 pt-16 md:pt-20">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.7, ease: EASE }}
             className="lg:col-span-4"
           >
             <Tilt3D max={8} scale={1.03} className="w-fit rounded-2xl">
               <div className="w-fit rounded-2xl bg-white px-5 py-4 shadow-elegant">
-                <img src={logo} alt="Vedant Group" className="h-14 w-auto" />
+                <img src={logo} alt="Vedant Group" className="h-20 w-auto" />
               </div>
             </Tilt3D>
             <p className="mt-6 text-sm leading-relaxed text-white/70 max-w-sm">
@@ -127,22 +188,38 @@ export function Footer() {
             </p>
 
             <div className="mt-6 space-y-3 text-sm text-white/80">
-              <div className="flex items-center gap-3">
-                <MapPin className="h-4 w-4 text-brand-cyan" /> RAK Economic Free Zone, Ras Al
-                Khaimah, UAE
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-brand-cyan" /> Info@vedantsgroups.com
-              </div>
+              <a
+                href="https://maps.google.com/?q=RAK+Economic+Free+Zone"
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-start gap-3 transition-colors hover:text-white"
+              >
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-cyan" />
+                <span>RAK Economic Free Zone, Ras Al Khaimah, UAE</span>
+              </a>
+              <a
+                href="mailto:Info@vedantsgroups.com"
+                className="group flex items-center gap-3 transition-colors hover:text-white"
+              >
+                <Mail className="h-4 w-4 shrink-0 text-brand-cyan" />
+                <span>Info@vedantsgroups.com</span>
+              </a>
+              <a
+                href="tel:+9710000000000"
+                className="group flex items-center gap-3 transition-colors hover:text-white"
+              >
+                <Phone className="h-4 w-4 shrink-0 text-brand-cyan" />
+                <span>+971 (0) 000 000 0000</span>
+              </a>
             </div>
 
             <div className="mt-6 flex items-center gap-3 perspective-1000">
-              {[Linkedin, Twitter, Facebook, Instagram, Youtube].map((Icon, i) => (
+              {SOCIALS.map(({ Icon, label }) => (
                 <a
-                  key={i}
+                  key={label}
                   href="#"
                   className="group grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/80 transition-all duration-300 hover:border-brand-cyan hover:text-white hover:bg-white/5 hover:-translate-y-1 hover:shadow-glow hover:rotate-[8deg]"
-                  aria-label="Social"
+                  aria-label={label}
                 >
                   <Icon className="h-4 w-4 transition-transform group-hover:scale-110" />
                 </a>
@@ -157,7 +234,7 @@ export function Footer() {
                 initial={{ opacity: 0, y: 20, rotateX: -10 }}
                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: ci * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.6, delay: ci * 0.08, ease: EASE }}
                 style={{ transformPerspective: 800 }}
               >
                 <h4 className="text-sm font-semibold uppercase tracking-wider text-brand-cyan">
@@ -182,33 +259,18 @@ export function Footer() {
           </div>
         </div>
 
-        <Tilt3D max={3} glare={false} className="mt-16 rounded-3xl">
-          <div className="rounded-3xl glass-dark p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-elegant">
-            <div>
-              <h3 className="text-xl font-semibold">Get enterprise insights, monthly.</h3>
-              <p className="mt-1 text-sm text-white/70">
-                Signals on cloud, AI, automation and industry transformation.
-              </p>
-            </div>
-            <form
-              className="flex w-full max-w-md flex-col sm:flex-row items-stretch sm:items-center gap-2"
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <input
-                type="email"
-                placeholder="you@company.com"
-                className="w-full min-w-0 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-brand-sky"
-              />
-              <button className="shrink-0 rounded-full bg-gradient-brand animate-gradient px-5 py-3 text-sm font-semibold shadow-elegant transition-transform hover:scale-105">
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </Tilt3D>
-
-        <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/50">
+        {/* ── Bottom bar ──────────────────────────────────────── */}
+        <div className="mt-12 pb-10 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/50">
           <p>© {new Date().getFullYear()} Vedant Group. All rights reserved.</p>
-          <p>Engineered with precision across 25+ countries.</p>
+          <div className="flex items-center gap-6">
+            <Link to="/contact" className="transition-colors hover:text-white/80">
+              Privacy
+            </Link>
+            <Link to="/contact" className="transition-colors hover:text-white/80">
+              Terms
+            </Link>
+            <p className="hidden sm:block">Engineered with precision across 25+ countries.</p>
+          </div>
         </div>
       </div>
     </footer>
