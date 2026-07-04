@@ -1,4 +1,5 @@
 ﻿import { createFileRoute, Link } from "@tanstack/react-router";
+import { absoluteUrl } from "@/lib/seo";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -39,9 +40,9 @@ export const Route = createFileRoute("/services/")({
           "Enterprise consulting, cloud, AI, cyber security, industrial automation, Salesforce, SAP and global talent solutions.",
       },
       { property: "og:title", content: "Services — Vedant Group" },
-      { property: "og:url", content: "/services" },
+      { property: "og:url", content: absoluteUrl("/services") },
     ],
-    links: [{ rel: "canonical", href: "/services" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/services") }],
   }),
 });
 

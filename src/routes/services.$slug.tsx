@@ -1,4 +1,5 @@
 ﻿import { createFileRoute, Link } from "@tanstack/react-router";
+import { absoluteUrl } from "@/lib/seo";
 import { motion } from "framer-motion";
 import {
   ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, Compass, PenTool,
@@ -127,9 +128,9 @@ export const Route = createFileRoute("/services/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "website" },
-        { property: "og:url", content: `/services/${params.slug}` },
+        { property: "og:url", content: absoluteUrl(`/services/${params.slug}`) },
       ],
-      links: [{ rel: "canonical", href: `/services/${params.slug}` }],
+      links: [{ rel: "canonical", href: absoluteUrl(`/services/${params.slug}`) }],
       scripts: service
         ? [{
             type: "application/ld+json",

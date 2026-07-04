@@ -1,4 +1,5 @@
 ﻿import { createFileRoute } from "@tanstack/react-router";
+import { absoluteUrl } from "@/lib/seo";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import {
   HeroSlider, TrustedBy, About, Services, WhyChoose, Industries,
@@ -12,9 +13,9 @@ export const Route = createFileRoute("/")({
       { title: "Vedant Group — Engineering Global Digital Excellence" },
       { name: "description", content: "Global enterprise consulting, cloud, AI, automation, Salesforce, SAP and talent solutions across 25+ countries." },
       { property: "og:title", content: "Vedant Group — Engineering Global Digital Excellence" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: absoluteUrl("/") },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/") }],
   }),
 });
 

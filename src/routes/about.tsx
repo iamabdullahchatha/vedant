@@ -1,4 +1,5 @@
 ﻿import { createFileRoute, Link } from "@tanstack/react-router";
+import { absoluteUrl } from "@/lib/seo";
 import { motion } from "framer-motion";
 import { Target, Eye, Sparkles, ShieldCheck, Globe2, Award } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
@@ -13,9 +14,9 @@ export const Route = createFileRoute("/about")({
       { title: "About — Vedant Group" },
       { name: "description", content: "Vedant Group is a global enterprise consulting group with 15+ years of experience across 25+ countries." },
       { property: "og:title", content: "About — Vedant Group" },
-      { property: "og:url", content: "/about" },
+      { property: "og:url", content: absoluteUrl("/about") },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/about") }],
   }),
 });
 

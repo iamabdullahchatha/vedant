@@ -1,5 +1,6 @@
 ﻿import { useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { absoluteUrl } from "@/lib/seo";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircleQuestion, Search, X } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
@@ -24,9 +25,9 @@ export const Route = createFileRoute("/faqs")({
           "Frequently asked questions about Vedant Group's enterprise services, engagement models and global delivery.",
       },
       { property: "og:title", content: "FAQs — Vedant Group" },
-      { property: "og:url", content: "/faqs" },
+      { property: "og:url", content: absoluteUrl("/faqs") },
     ],
-    links: [{ rel: "canonical", href: "/faqs" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/faqs") }],
   }),
 });
 

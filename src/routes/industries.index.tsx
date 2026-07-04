@@ -1,4 +1,5 @@
 ﻿import { createFileRoute, Link } from "@tanstack/react-router";
+import { absoluteUrl } from "@/lib/seo";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles, Users } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
@@ -19,9 +20,9 @@ export const Route = createFileRoute("/industries/")({
           "Deep industry expertise across manufacturing, BFSI, healthcare, energy, telecom, government, logistics and more.",
       },
       { property: "og:title", content: "Industries — Vedant Group" },
-      { property: "og:url", content: "/industries" },
+      { property: "og:url", content: absoluteUrl("/industries") },
     ],
-    links: [{ rel: "canonical", href: "/industries" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/industries") }],
   }),
 });
 

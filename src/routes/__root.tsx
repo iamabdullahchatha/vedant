@@ -11,10 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-
-// Absolute base URL for social/OG tags. Crawlers like WhatsApp, Facebook and
-// LinkedIn require og:image to be a fully-qualified https:// URL, not a relative path.
-const SITE_URL = "https://vedantsgroups.com";
+import { SITE_URL, OG_IMAGE } from "../lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -79,13 +76,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "Vedant Group" },
       { name: "twitter:description", content: "Engineering global digital excellence for enterprises." },
       { property: "og:url", content: `${SITE_URL}/` },
-      { property: "og:image", content: `${SITE_URL}/og-image.jpg` },
-      { property: "og:image:secure_url", content: `${SITE_URL}/og-image.jpg` },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:secure_url", content: OG_IMAGE },
       { property: "og:image:type", content: "image/jpeg" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { property: "og:image:alt", content: "Vedant Group — Engineering Global Digital Excellence" },
-      { name: "twitter:image", content: `${SITE_URL}/og-image.jpg` },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

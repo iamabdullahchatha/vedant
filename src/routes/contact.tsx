@@ -1,4 +1,5 @@
 ﻿import { createFileRoute } from "@tanstack/react-router";
+import { absoluteUrl } from "@/lib/seo";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -16,9 +17,9 @@ export const Route = createFileRoute("/contact")({
       { title: "Contact — Vedant Group" },
       { name: "description", content: "Talk to a Vedant Group expert. Reach our global HQ in the RAK Economic Free Zone, UAE — we respond within one business day." },
       { property: "og:title", content: "Contact — Vedant Group" },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: absoluteUrl("/contact") },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: absoluteUrl("/contact") }],
   }),
 });
 

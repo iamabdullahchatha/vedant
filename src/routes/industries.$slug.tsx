@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { absoluteUrl } from "@/lib/seo";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -30,9 +31,9 @@ export const Route = createFileRoute("/industries/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "website" },
-        { property: "og:url", content: `/industries/${params.slug}` },
+        { property: "og:url", content: absoluteUrl(`/industries/${params.slug}`) },
       ],
-      links: [{ rel: "canonical", href: `/industries/${params.slug}` }],
+      links: [{ rel: "canonical", href: absoluteUrl(`/industries/${params.slug}`) }],
       scripts: industry
         ? [
             {
