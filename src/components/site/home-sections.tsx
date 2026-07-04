@@ -1,5 +1,5 @@
 ﻿import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, AnimatePresence, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   ArrowRight, Cloud, Shield, Cpu, Database, Cog, Users, Globe2, Sparkles,
   Zap, LineChart, Bot, Factory, HeartPulse, Landmark, ShoppingBag, Fuel,
@@ -65,8 +65,36 @@ export function HeroSlider() {
   }, []);
   const slide = SLIDES[index];
 
+  // Mouse-driven parallax for 3D depth.
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const sx = useSpring(mx, { stiffness: 60, damping: 18, mass: 0.6 });
+  const sy = useSpring(my, { stiffness: 60, damping: 18, mass: 0.6 });
+  const orbAX = useTransform(sx, [-0.5, 0.5], [-40, 40]);
+  const orbAY = useTransform(sy, [-0.5, 0.5], [-28, 28]);
+  const orbBX = useTransform(sx, [-0.5, 0.5], [30, -30]);
+  const orbBY = useTransform(sy, [-0.5, 0.5], [22, -22]);
+  const ringX = useTransform(sx, [-0.5, 0.5], [-24, 24]);
+  const ringY = useTransform(sy, [-0.5, 0.5], [-18, 18]);
+  const contentX = useTransform(sx, [-0.5, 0.5], [-14, 14]);
+  const contentY = useTransform(sy, [-0.5, 0.5], [-10, 10]);
+
+  const onMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mx.set((e.clientX - rect.left) / rect.width - 0.5);
+    my.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+  const onMouseLeave = () => {
+    mx.set(0);
+    my.set(0);
+  };
+
   return (
-    <section className="relative h-[100svh] min-h-[720px] w-full overflow-hidden bg-brand-navy">
+    <section
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+      className="relative h-[100svh] min-h-[720px] w-full overflow-hidden bg-brand-navy"
+    >
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
@@ -82,17 +110,17 @@ export function HeroSlider() {
         </motion.div>
       </AnimatePresence>
 
-      {/* floating orbs with 3D depth rings */}
+      {/* floating orbs with 3D depth rings — parallax on mouse move */}
       <div className="pointer-events-none absolute inset-0 perspective-1000">
-        <div className="absolute top-1/4 left-1/3 h-72 w-72 rounded-full bg-brand-sky/30 blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-brand-cyan/20 blur-3xl animate-float" style={{ animationDelay: "2s" }} />
-        <div className="absolute right-[12%] top-[18%] hidden lg:block preserve-3d opacity-60">
+        <motion.div style={{ x: orbAX, y: orbAY }} className="absolute top-1/4 left-1/3 h-72 w-72 rounded-full bg-brand-sky/30 blur-3xl animate-float" />
+        <motion.div style={{ x: orbBX, y: orbBY }} className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-brand-cyan/20 blur-3xl animate-float" />
+        <motion.div style={{ x: ringX, y: ringY }} className="absolute right-[12%] top-[18%] hidden lg:block preserve-3d opacity-60">
           <div className="h-32 w-32 rounded-full border border-white/20 animate-spin-slow" style={{ transform: "rotateX(65deg)" }} />
           <div className="absolute inset-3 rounded-full border border-brand-cyan/30 animate-spin-slow-reverse" style={{ transform: "rotateX(65deg)" }} />
-        </div>
+        </motion.div>
       </div>
 
-      <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end pb-24 pt-32 px-4 sm:px-6 lg:px-8">
+      <motion.div style={{ x: contentX, y: contentY }} className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end pb-24 pt-32 px-4 sm:px-6 lg:px-8">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
@@ -155,7 +183,7 @@ export function HeroSlider() {
             {String(index + 1).padStart(2, "0")} / {String(SLIDES.length).padStart(2, "0")}
           </span>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
