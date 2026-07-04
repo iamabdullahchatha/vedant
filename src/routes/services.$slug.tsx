@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
+import { Tilt3D } from "@/components/site/Tilt3D";
 import { CTA } from "@/components/site/home-sections";
 import { getServiceBySlug, getCategory, getServicesByCategory } from "@/data/services";
 import picCollaboration from "@/assets/pic-collaboration.jpg";
@@ -19,12 +20,90 @@ import picCybersecurity from "@/assets/pic-cybersecurity.jpg";
 import picAiDashboard from "@/assets/pic-ai-dashboard.jpg";
 import picPlantEngineer from "@/assets/pic-plant-engineer.jpg";
 
+// Per-service hero images — one unique, contextually matched photo per service page.
+import svcItConsulting from "@/assets/pic-svc-it-consulting.jpg";
+import svcDigitalTransformation from "@/assets/pic-svc-digital-transformation.jpg";
+import svcEnterpriseSoftwareDevelopment from "@/assets/pic-svc-enterprise-software-development.jpg";
+import svcApplicationDevelopment from "@/assets/pic-svc-application-development.jpg";
+import svcApplicationMaintenance from "@/assets/pic-svc-application-maintenance.jpg";
+import svcManagedItServices from "@/assets/pic-svc-managed-it-services.jpg";
+import svcQualityAssurance from "@/assets/pic-svc-quality-assurance.jpg";
+import svcAutomationTesting from "@/assets/pic-svc-automation-testing.jpg";
+import svcCloudServices from "@/assets/pic-svc-cloud-services.jpg";
+import svcCloudMigration from "@/assets/pic-svc-cloud-migration.jpg";
+import svcDevops from "@/assets/pic-svc-devops.jpg";
+import svcCyberSecurity from "@/assets/pic-svc-cyber-security.jpg";
+import svcDataAnalytics from "@/assets/pic-svc-data-analytics.jpg";
+import svcBigData from "@/assets/pic-svc-big-data.jpg";
+import svcBusinessIntelligence from "@/assets/pic-svc-business-intelligence.jpg";
+import svcInfrastructureServices from "@/assets/pic-svc-infrastructure-services.jpg";
+import svcArtificialIntelligence from "@/assets/pic-svc-artificial-intelligence.jpg";
+import svcMachineLearning from "@/assets/pic-svc-machine-learning.jpg";
+import svcRoboticProcessAutomation from "@/assets/pic-svc-robotic-process-automation.jpg";
+import svcIot from "@/assets/pic-svc-iot.jpg";
+import svcBlockchain from "@/assets/pic-svc-blockchain.jpg";
+import svcIndustrialAutomation from "@/assets/pic-svc-industrial-automation.jpg";
+import svcManufacturingAutomation from "@/assets/pic-svc-manufacturing-automation.jpg";
+import svcPlc from "@/assets/pic-svc-plc.jpg";
+import svcScada from "@/assets/pic-svc-scada.jpg";
+import svcDcs from "@/assets/pic-svc-dcs.jpg";
+import svcMes from "@/assets/pic-svc-mes.jpg";
+import svcSap from "@/assets/pic-svc-sap.jpg";
+import svcSalesforceConsulting from "@/assets/pic-svc-salesforce-consulting.jpg";
+import svcSalesforceImplementation from "@/assets/pic-svc-salesforce-implementation.jpg";
+import svcSalesforceIntegration from "@/assets/pic-svc-salesforce-integration.jpg";
+import svcCrmSolutions from "@/assets/pic-svc-crm-solutions.jpg";
+import svcHrRecruitment from "@/assets/pic-svc-hr-recruitment.jpg";
+import svcPermanentHiring from "@/assets/pic-svc-permanent-hiring.jpg";
+import svcContractStaffing from "@/assets/pic-svc-contract-staffing.jpg";
+import svcGlobalTalentSolutions from "@/assets/pic-svc-global-talent-solutions.jpg";
+
 const CATEGORY_IMAGE: Record<string, string> = {
   "consulting-transformation": picCollaboration,
   "cloud-data-security": picDataCenter,
   "ai-automation": picRobotArm,
   "industrial-enterprise": picFactoryFloor,
   "talent-solutions": picRecruitment,
+};
+
+// Unique hero image for every individual service page.
+const SERVICE_IMAGE: Record<string, string> = {
+  "it-consulting": svcItConsulting,
+  "digital-transformation": svcDigitalTransformation,
+  "enterprise-software-development": svcEnterpriseSoftwareDevelopment,
+  "application-development": svcApplicationDevelopment,
+  "application-maintenance": svcApplicationMaintenance,
+  "managed-it-services": svcManagedItServices,
+  "quality-assurance": svcQualityAssurance,
+  "automation-testing": svcAutomationTesting,
+  "cloud-services": svcCloudServices,
+  "cloud-migration": svcCloudMigration,
+  "devops": svcDevops,
+  "cyber-security": svcCyberSecurity,
+  "data-analytics": svcDataAnalytics,
+  "big-data": svcBigData,
+  "business-intelligence": svcBusinessIntelligence,
+  "infrastructure-services": svcInfrastructureServices,
+  "artificial-intelligence": svcArtificialIntelligence,
+  "machine-learning": svcMachineLearning,
+  "robotic-process-automation": svcRoboticProcessAutomation,
+  "iot": svcIot,
+  "blockchain": svcBlockchain,
+  "industrial-automation": svcIndustrialAutomation,
+  "manufacturing-automation": svcManufacturingAutomation,
+  "plc": svcPlc,
+  "scada": svcScada,
+  "dcs": svcDcs,
+  "mes": svcMes,
+  "sap": svcSap,
+  "salesforce-consulting": svcSalesforceConsulting,
+  "salesforce-implementation": svcSalesforceImplementation,
+  "salesforce-integration": svcSalesforceIntegration,
+  "crm-solutions": svcCrmSolutions,
+  "hr-recruitment": svcHrRecruitment,
+  "permanent-hiring": svcPermanentHiring,
+  "contract-staffing": svcContractStaffing,
+  "global-talent-solutions": svcGlobalTalentSolutions,
 };
 
 const CATEGORY_OVERVIEW_IMAGE: Record<string, string> = {
@@ -122,7 +201,7 @@ function ServiceDetailPage() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-brand-navy text-white pt-36 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="absolute inset-0">
-          <img src={CATEGORY_IMAGE[service.categorySlug] ?? picHandshake} alt="" className="h-full w-full object-cover" />
+          <img src={SERVICE_IMAGE[service.slug] ?? CATEGORY_IMAGE[service.categorySlug] ?? picHandshake} alt="" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-brand-navy/85" />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/70 to-brand-navy/40" />
         </div>
@@ -145,43 +224,79 @@ function ServiceDetailPage() {
             <span className="text-white/80">{category.name}</span>
           </nav>
 
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <div className="mt-6 inline-flex items-center gap-2 rounded-full glass-dark px-4 py-2 text-xs font-semibold uppercase tracking-widest text-brand-cyan">
-              <Icon className="h-3.5 w-3.5" /> {category.name}
-            </div>
-            <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] max-w-4xl">
-              {service.name}
-            </h1>
-            <p className="mt-5 max-w-3xl text-xl text-brand-cyan/90 font-medium leading-snug">
-              {service.tagline}
-            </p>
-            <p className="mt-4 max-w-2xl text-base text-white/70 leading-relaxed">
-              {service.description}
-            </p>
+          <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <motion.div
+              className="lg:col-span-7"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+            >
+              <div className="inline-flex items-center gap-2 rounded-full glass-dark px-4 py-2 text-xs font-semibold uppercase tracking-widest text-brand-cyan">
+                <Icon className="h-3.5 w-3.5" /> {category.name}
+              </div>
+              <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05]">
+                {service.name}
+              </h1>
+              <p className="mt-5 text-xl text-brand-cyan/90 font-medium leading-snug">
+                {service.tagline}
+              </p>
+              <p className="mt-4 max-w-2xl text-base text-white/70 leading-relaxed">
+                {service.description}
+              </p>
 
-            <div className="mt-7 flex flex-wrap gap-2">
-              {["Global delivery", "Certified experts", "25+ countries", "Flexible engagement"].map((t) => (
-                <span key={t} className="rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs font-medium text-white/85">
-                  {t}
-                </span>
-              ))}
-            </div>
+              <div className="mt-7 flex flex-wrap gap-2">
+                {["Global delivery", "Certified experts", "25+ countries", "Flexible engagement"].map((t) => (
+                  <span key={t} className="rounded-full border border-white/20 bg-white/5 px-3 py-1 text-xs font-medium text-white/85">
+                    {t}
+                  </span>
+                ))}
+              </div>
 
-            <div className="mt-9 flex flex-wrap gap-4">
-              <Link
-                to="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-gradient-brand animate-gradient px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-elegant transition-transform hover:scale-[1.03]"
-              >
-                Discuss your project <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                to="/services"
-                className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 backdrop-blur px-7 py-3.5 text-sm font-semibold text-white hover:bg-white/10 transition"
-              >
-                <ArrowLeft className="h-4 w-4" /> All services
-              </Link>
-            </div>
-          </motion.div>
+              <div className="mt-9 flex flex-wrap gap-4">
+                <Link
+                  to="/contact"
+                  className="group inline-flex items-center gap-2 rounded-full bg-gradient-brand animate-gradient px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-elegant transition-transform hover:scale-[1.03]"
+                >
+                  Discuss your project <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  to="/services"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 backdrop-blur px-7 py-3.5 text-sm font-semibold text-white hover:bg-white/10 transition"
+                >
+                  <ArrowLeft className="h-4 w-4" /> All services
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Floating 3D image card */}
+            <motion.div
+              className="hidden lg:block lg:col-span-5 perspective-1000"
+              initial={{ opacity: 0, y: 40, rotateY: -12 }}
+              animate={{ opacity: 1, y: 0, rotateY: 0 }}
+              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            >
+              <div className="absolute -inset-4 rounded-[2rem] bg-gradient-brand opacity-30 blur-3xl" />
+              <Tilt3D max={12} scale={1.03} className="group relative rounded-[1.75rem]">
+                <div className="relative overflow-hidden rounded-[1.75rem] border border-white/15 shadow-elegant">
+                  <img
+                    src={SERVICE_IMAGE[service.slug] ?? CATEGORY_IMAGE[service.categorySlug] ?? picHandshake}
+                    alt={`${service.name} at Vedant Group`}
+                    className="aspect-[4/3] h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center gap-3 rounded-2xl glass-dark px-4 py-3">
+                    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-gradient-brand text-white">
+                      <Icon className="h-4.5 w-4.5" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="truncate text-sm font-semibold text-white">{service.name}</p>
+                      <p className="truncate text-xs text-white/60">{category.name}</p>
+                    </div>
+                  </div>
+                </div>
+              </Tilt3D>
+            </motion.div>
+          </div>
         </div>
       </section>
 
