@@ -48,7 +48,7 @@ export const Route = createFileRoute("/industries/$slug")({
                 provider: {
                   "@type": "Organization",
                   name: "Vedant Group",
-                  url: "/",
+                  url: absoluteUrl("/"),
                 },
               }),
             },

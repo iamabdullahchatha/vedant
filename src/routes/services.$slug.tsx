@@ -7,7 +7,6 @@ import {
 } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
-import { Tilt3D } from "@/components/site/Tilt3D";
 import { CTA } from "@/components/site/home-sections";
 import { getServiceBySlug, getCategory, getServicesByCategory } from "@/data/services";
 import picCollaboration from "@/assets/pic-collaboration.jpg";
@@ -16,10 +15,6 @@ import picRobotArm from "@/assets/pic-robot-arm.jpg";
 import picFactoryFloor from "@/assets/pic-factory-floor.jpg";
 import picRecruitment from "@/assets/pic-recruitment.jpg";
 import picHandshake from "@/assets/pic-handshake.jpg";
-import picConsultingDiscussion from "@/assets/pic-consulting-discussion.jpg";
-import picCybersecurity from "@/assets/pic-cybersecurity.jpg";
-import picAiDashboard from "@/assets/pic-ai-dashboard.jpg";
-import picPlantEngineer from "@/assets/pic-plant-engineer.jpg";
 
 // Per-service hero images — one unique, contextually matched photo per service page.
 import svcItConsulting from "@/assets/pic-svc-it-consulting.jpg";
@@ -107,14 +102,6 @@ const SERVICE_IMAGE: Record<string, string> = {
   "global-talent-solutions": svcGlobalTalentSolutions,
 };
 
-const CATEGORY_OVERVIEW_IMAGE: Record<string, string> = {
-  "consulting-transformation": picConsultingDiscussion,
-  "cloud-data-security": picCybersecurity,
-  "ai-automation": picAiDashboard,
-  "industrial-enterprise": picPlantEngineer,
-  "talent-solutions": picHandshake,
-};
-
 export const Route = createFileRoute("/services/$slug")({
   component: ServiceDetailPage,
   head: ({ params }) => {
@@ -144,7 +131,7 @@ export const Route = createFileRoute("/services/$slug")({
               provider: {
                 "@type": "Organization",
                 name: "Vedant Group",
-                url: "/",
+                url: absoluteUrl("/"),
               },
             }),
           }]
@@ -225,9 +212,9 @@ function ServiceDetailPage() {
             <span className="text-white/80">{category.name}</span>
           </nav>
 
-          <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="mt-6">
             <motion.div
-              className="lg:col-span-7"
+              className="max-w-3xl"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
@@ -268,35 +255,6 @@ function ServiceDetailPage() {
                 </Link>
               </div>
             </motion.div>
-
-            {/* Floating 3D image card */}
-            <motion.div
-              className="hidden lg:block lg:col-span-5 perspective-1000"
-              initial={{ opacity: 0, y: 40, rotateY: -12 }}
-              animate={{ opacity: 1, y: 0, rotateY: 0 }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-            >
-              <div className="absolute -inset-4 rounded-[2rem] bg-gradient-brand opacity-30 blur-3xl" />
-              <Tilt3D max={12} scale={1.03} className="group relative rounded-[1.75rem]">
-                <div className="relative overflow-hidden rounded-[1.75rem] border border-white/15 shadow-elegant">
-                  <img
-                    src={SERVICE_IMAGE[service.slug] ?? CATEGORY_IMAGE[service.categorySlug] ?? picHandshake}
-                    alt={`${service.name} at Vedant Group`}
-                    className="aspect-[4/3] h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center gap-3 rounded-2xl glass-dark px-4 py-3">
-                    <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-gradient-brand text-white">
-                      <Icon className="h-4.5 w-4.5" />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="truncate text-sm font-semibold text-white">{service.name}</p>
-                      <p className="truncate text-xs text-white/60">{category.name}</p>
-                    </div>
-                  </div>
-                </div>
-              </Tilt3D>
-            </motion.div>
           </div>
         </div>
       </section>
@@ -326,7 +284,7 @@ function ServiceDetailPage() {
 
               <div className="relative mt-8 overflow-hidden rounded-3xl shadow-elegant">
                 <img
-                  src={CATEGORY_OVERVIEW_IMAGE[service.categorySlug] ?? picHandshake}
+                  src={SERVICE_IMAGE[service.slug] ?? CATEGORY_IMAGE[service.categorySlug] ?? picHandshake}
                   alt={`${service.name} delivery at Vedant Group`}
                   className="aspect-[16/9] h-full w-full object-cover"
                   loading="lazy"
